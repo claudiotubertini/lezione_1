@@ -1,0 +1,1585 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <title>2020-06-24-manuale</title>
+  <style>
+    html {
+      color: #1a1a1a;
+      background-color: #fdfdfd;
+    }
+    body {
+      margin: 0 auto;
+      max-width: 36em;
+      padding-left: 50px;
+      padding-right: 50px;
+      padding-top: 50px;
+      padding-bottom: 50px;
+      hyphens: auto;
+      overflow-wrap: break-word;
+      text-rendering: optimizeLegibility;
+      font-kerning: normal;
+    }
+    @media (max-width: 600px) {
+      body {
+        font-size: 0.9em;
+        padding: 12px;
+      }
+      h1 {
+        font-size: 1.8em;
+      }
+    }
+    @media print {
+      html {
+        background-color: white;
+      }
+      body {
+        background-color: transparent;
+        color: black;
+        font-size: 12pt;
+      }
+      p, h2, h3 {
+        orphans: 3;
+        widows: 3;
+      }
+      h2, h3, h4 {
+        page-break-after: avoid;
+      }
+    }
+    p {
+      margin: 1em 0;
+    }
+    a {
+      color: #1a1a1a;
+    }
+    a:visited {
+      color: #1a1a1a;
+    }
+    img {
+      max-width: 100%;
+    }
+    svg {
+      height: auto;
+      max-width: 100%;
+    }
+    h1, h2, h3, h4, h5, h6 {
+      margin-top: 1.4em;
+    }
+    h5, h6 {
+      font-size: 1em;
+      font-style: italic;
+    }
+    h6 {
+      font-weight: normal;
+    }
+    ol, ul {
+      padding-left: 1.7em;
+      margin-top: 1em;
+    }
+    li > ol, li > ul {
+      margin-top: 0;
+    }
+    blockquote {
+      margin: 1em 0 1em 1.7em;
+      padding-left: 1em;
+      border-left: 2px solid #e6e6e6;
+      color: #606060;
+    }
+    code {
+      font-family: Menlo, Monaco, Consolas, 'Lucida Console', monospace;
+      font-size: 85%;
+      margin: 0;
+      hyphens: manual;
+    }
+    pre {
+      margin: 1em 0;
+      overflow: auto;
+    }
+    pre code {
+      padding: 0;
+      overflow: visible;
+      overflow-wrap: normal;
+    }
+    .sourceCode {
+     background-color: transparent;
+     overflow: visible;
+    }
+    hr {
+      border: none;
+      border-top: 1px solid #1a1a1a;
+      height: 1px;
+      margin: 1em 0;
+    }
+    table {
+      margin: 1em 0;
+      border-collapse: collapse;
+      width: 100%;
+      overflow-x: auto;
+      display: block;
+      font-variant-numeric: lining-nums tabular-nums;
+    }
+    table caption {
+      margin-bottom: 0.75em;
+    }
+    tbody {
+      margin-top: 0.5em;
+      border-top: 1px solid #1a1a1a;
+      border-bottom: 1px solid #1a1a1a;
+    }
+    th {
+      border-top: 1px solid #1a1a1a;
+      padding: 0.25em 0.5em 0.25em 0.5em;
+    }
+    td {
+      padding: 0.125em 0.5em 0.25em 0.5em;
+    }
+    header {
+      margin-bottom: 4em;
+      text-align: center;
+    }
+    #TOC li {
+      list-style: none;
+    }
+    #TOC ul {
+      padding-left: 1.3em;
+    }
+    #TOC > ul {
+      padding-left: 0;
+    }
+    #TOC a:not(:hover) {
+      text-decoration: none;
+    }
+    code{white-space: pre-wrap;}
+    span.smallcaps{font-variant: small-caps;}
+    div.columns{display: flex; gap: min(4vw, 1.5em);}
+    div.column{flex: auto; overflow-x: auto;}
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+    /* The extra [class] is a hack that increases specificity enough to
+       override a similar rule in reveal.js */
+    ul.task-list[class]{list-style: none;}
+    ul.task-list li input[type="checkbox"] {
+      font-size: inherit;
+      width: 0.8em;
+      margin: 0 0.8em 0.2em -1.6em;
+      vertical-align: middle;
+    }
+    .display.math{display: block; text-align: center; margin: 0.5rem auto;}
+    /* CSS for syntax highlighting */
+    html { -webkit-text-size-adjust: 100%; }
+    pre > code.sourceCode { white-space: pre; position: relative; }
+    pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+    pre > code.sourceCode > span:empty { height: 1.2em; }
+    .sourceCode { overflow: visible; }
+    code.sourceCode > span { color: inherit; text-decoration: inherit; }
+    div.sourceCode { margin: 1em 0; }
+    pre.sourceCode { margin: 0; }
+    @media screen {
+    div.sourceCode { overflow: auto; }
+    }
+    @media print {
+    pre > code.sourceCode { white-space: pre-wrap; }
+    pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+    }
+    pre.numberSource code
+      { counter-reset: source-line 0; }
+    pre.numberSource code > span
+      { position: relative; left: -4em; counter-increment: source-line; }
+    pre.numberSource code > span > a:first-child::before
+      { content: counter(source-line);
+        position: relative; left: -1em; text-align: right; vertical-align: baseline;
+        border: none; display: inline-block;
+        -webkit-touch-callout: none; -webkit-user-select: none;
+        -khtml-user-select: none; -moz-user-select: none;
+        -ms-user-select: none; user-select: none;
+        padding: 0 4px; width: 4em;
+        color: #aaaaaa;
+      }
+    pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+    div.sourceCode
+      {   }
+    @media screen {
+    pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+    }
+    code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+    code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+    code span.at { color: #7d9029; } /* Attribute */
+    code span.bn { color: #40a070; } /* BaseN */
+    code span.bu { color: #008000; } /* BuiltIn */
+    code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+    code span.ch { color: #4070a0; } /* Char */
+    code span.cn { color: #880000; } /* Constant */
+    code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+    code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+    code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+    code span.dt { color: #902000; } /* DataType */
+    code span.dv { color: #40a070; } /* DecVal */
+    code span.er { color: #ff0000; font-weight: bold; } /* Error */
+    code span.ex { } /* Extension */
+    code span.fl { color: #40a070; } /* Float */
+    code span.fu { color: #06287e; } /* Function */
+    code span.im { color: #008000; font-weight: bold; } /* Import */
+    code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+    code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+    code span.op { color: #666666; } /* Operator */
+    code span.ot { color: #007020; } /* Other */
+    code span.pp { color: #bc7a00; } /* Preprocessor */
+    code span.sc { color: #4070a0; } /* SpecialChar */
+    code span.ss { color: #bb6688; } /* SpecialString */
+    code span.st { color: #4070a0; } /* String */
+    code span.va { color: #19177c; } /* Variable */
+    code span.vs { color: #4070a0; } /* VerbatimString */
+    code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+  </style>
+</head>
+<body>
+<h1 id="capitolo-xx-il-web-come-editoria-digitale">Capitolo XX Il web
+come editoria digitale</h1>
+<h2 id="cosè-leditoria">1. Cos’è l’editoria</h2>
+<h3 id="aside">Aside</h3>
+<blockquote>
+<p>Nota: Elenchiamo in ordine di difficoltà</p>
+</blockquote>
+<ul>
+<li><a
+href="https://developer.mozilla.org/en-US/docs/Learn/JavaScript/First_steps">JavaScript
+First Steps</a><br />
+</li>
+<li><a href="https://github.com/thejsway/thejsway">The JavaScript
+Way</a><br />
+</li>
+<li><a href="https://eloquentjavascript.net/">Eloquent
+JavaScript</a><br />
+</li>
+<li><a
+href="https://mitpress.mit.edu/sites/default/files/sicp/full-text/book/book.html">Structure
+and Interpretation of Computer Programs</a></li>
+</ul>
+<p>Leggere almeno una di queste introduzioni alla programmazione tenendo
+presente che la prima si rivolge a lettori completamente principianti,
+la terza è di qualche interesse anche per il lettore professionista,
+l’ultima costituisce un’introduzione generale utile a chi ha già provato
+a scrivere qualche programma. Tutti gli esempi di programmazione in
+questo saggio utilizzano Javascript, un linguaggio non particolarmente
+indicato per dei neofiti, al contrario dell’elegante e (spesso) molto
+chiaro Python. Ma JavaScript è un linguaggio di cui non si può fare a
+meno: sul web, inserito in un ePub o addirittura in un pdf, resta la
+soluzione da preferire. Per chi volesse approfondire i temi di cui si
+parla in questo capitolo è consigliabile apprendere almeno i rudimenti
+di Python. La bibliografia è sterminata, ma si può partire da questa
+pagina <a
+href="https://wiki.python.org/moin/BeginnersGuide"><strong>Beginners
+Guide</strong></a>. L’ultimo volume citato all’inizio usa invece LISP,
+un linguaggio che non potrà non piacere ai lettori umanisti
+digitali.</p>
+<p>Come emerge dai capitoli precedenti la produzione editoriale digitale
+può significativamente aiutare la formazione, l’interpretazione e la
+disseminazione della conoscenza nelle discipline umanistiche. La
+diffusione e la facile consultazione delle banche dati, il data mining,
+la costante e continua comunicazione con i colleghi o con i lettori
+modifica l’idea stessa di pubblicazione <a
+href="https://claudiotubertini.github.io/ediotria/53-1-234-3-10-20180310.pdf">Riva,
+2017</a>. Ora passeremo in rassegna, cercando di capirne alcuni
+meccanismi di funzionamento, gli aspetti tecnici dei media digitali
+destinati all’editoria e contemporaneamente cercando anche di acquisire
+qualche nozione di programmazione che ci eviti di essere utilizzatori
+<em>naive</em>. Guarderemo soprattutto al web, creato per comunicare e
+distribuire documenti <a
+href="http://info.cern.ch/hypertext/WWW/TheProject.html">Vedi la prima
+pagina web pubblicata dal CERN</a>, trasformato oggi in qualcosa di più
+complesso e diversificato, dove però i testi conservano comunque un
+ruolo rilevante. Così facendo emergerà una descrizione generale di cosa
+possa e debba essere una pubblicazione digitale, una pubblicazione che
+sia anche disponibile offline, sia condivisibile e facilmente
+trasmissibile, conservabile per un tempo teoricamente indefinito <a
+href="https://www.w3.org/publishing/">publishing@W3C</a>. Queste sono le
+caratteristiche che distinguono l’editoria digitale dai prodotti web,
+prodotti, questi ultimi, che per il resto appaiono sostanzialmente
+indistinguibili. Insomma per parlare di editoria guarderemo al web,
+anche se terremo ferme nel confronto alcune caratteristiche del libro
+tradizionale, essere accessibile offline, condivisibile e conservabile,
+un prodotto straordinariamente efficiente e di grande successo per poter
+essere abbandonato a cuor leggero.</p>
+<p>È necessaria una qualche delucidazione terminologica. Quando si parla
+di editoria digitale il primo riferimento è all’organizzazione di
+produzione e distribuzione di pdf ed ePub. Ovvero a quei file che i
+lettori possono scambiarsi o acquistare su una qualunque libreria
+online. Noi considereremo editoriali invece tutte le tecnologie che
+consentono la trasmissione di contenuti “librari”, contenuti cioè
+sufficientemente complessi tanto da richiedere l’intervento di un autore
+professionista, tecnologie sottoinsieme di un campo più vasto noto sotto
+il nome di tecnologie per la produzione di applicazioni web.</p>
+<p>Ciò che viene comunemente chiamato e-book è costituito da un file PDF
+o un ePub, un gruppo di file HTML raccolti secondo regole convenzionali
+stabilite di comune accordo fra i principali produttori del settore. Per
+le specifiche tecniche si può leggere utilmente <a
+href="https://www.w3.org/publishing/epub32/epub-spec.html">EPUB 3.2</a>.
+Dopo questa breve introduzione, dedicata a ciò che ci si aspetta da un
+saggio dedicato all’editoria digitale, ci guarderemo attorno iniziando
+dal web, e dalle pagine html che troviamo dopo una ricerca. Vedremo come
+possono comunicare dati e informazioni attraverso una semantica
+condivisa e ci impratichiremo un poco di alcune tecniche importanti,
+come le espressioni regolari o l’XPath. Nelle pagine successive vedremo
+come utilizzare dati per produrre contenuti interattivi (programmazione
+lato utente), e vedremo rapidamente anche come quei dati possano essere
+conservati e riutilizzati (programmazione lato server). Nel paragrafo
+successivo passeremo da quello che in effetti sono le pagine web a come
+i contenuti possono essere trasmessi efficacemente attraverso alcune
+tecnologie legate ai linguaggi di markup (le tecnologie XML) e anche
+come si può generare un file PDF, che resta uno strumento principe di
+comunicazione (insieme all’HTML).</p>
+<p>Questo saggio ha a volte l’aspetto del tutorial, perché la lettura di
+questi temi ha bisogno di scrittura di codice e dell’esecuzione
+personale, da parte del lettore, dei programmi allegati, a volte anche
+complessi per un neofita (tutti gli esempi sono scaricabili da una
+account <a
+href="https://claudiotubertini.github.io/editoria/">github</a>. Ma ha
+anche un altro aspetto: cerca di essere un’introduzione ad alcuni
+concetti, propri dell’informatica, in qualche modo utili alla produzione
+editoriale umanistica, passati in rassegna in modo generale e sintetico,
+direi in modo saggistico, ovvero con qualche elemento di soggettività.
+Questo capitolo è anche uno dei tanti tentativi di risoluzione del
+problema didattico dell’insegnamento di nozioni interdisciplinari. La
+modalità che mi sembra più adeguata, dopo, lo confesso, alcuni anni di
+esperimenti alle spalle di ignari studenti, è quello di presentare una
+serie di attività pratiche, che richiedano sforzo di programmazione e
+letture integrative di varia origine, organizzate intorno a problemi
+specifici, a volte necessariamente, per ovvie ragioni di economia,
+descritte in termini vaghi. Questo dovrebbe consentire il consolidamento
+di alcune nozioni di base e allo stesso tempo spingere a letture
+ulteriori, per capire quello che è stato solo accennato, in un processo
+di costante ricerca che si spera proficuo sia per chi legge sia per chi
+scrive.</p>
+<h2 id="il-lettore-automatico">2. Il lettore automatico</h2>
+<p>(Nota bibliografica - Una prima versione di questo paragrafo è stata
+pubblicata in <em>Il libro digitale. La parola agli editori</em>, a cura
+di Maria Villano, Biblioteca Clueb, 2020)</p>
+<p>Per comprendere quale sia la struttura di una pagina web assumeremo
+un punto di vista (apparentemente) inusuale, quello di un lettore
+automatico, ad esempio lo spider di Google o di un simile motore di
+ricerca. Il flusso di dati che aziende, istituzioni di ricerca e utenti
+si scambiano è imponente. Buona parte di questo flusso è in genere
+inaccessibile, conservato all’interno di <em>repositories</em> privati,
+ma gli scambi con il web sono costanti e, presumiamo, importanti.
+L’attività di raccolta dati è così rilevante che oltre ai motori
+generalisti, come <a href="https://about.google/intl/en-US/">Google</a>,
+<a href="https://duckduckgo.com/?va=z&amp;t=hc">DuckDuckGo</a> o il
+nuovo e interessante, <a href="https://cliqz.com/en/about">cliqz</a>
+esistono anche motori di ricerca specializzati: ad esempio <a
+href="https://www.wolframalpha.com/">WolframAlpha</a>, <a
+href="https://www.mendeley.com/?interaction_required=true">Mendeley</a>
+e <a href="https://www.zotero.org/">Zotero</a>. I motori di ricerca
+hanno fondamentalmente due compiti:</p>
+<ol type="1">
+<li>raccogliere dati significativi che illustrano il contenuto delle
+pagine web;</li>
+<li>consentire ricerche per recuperare questi dati. In queste pagine
+guarderemo ad alcuni aspetti della prima attività, rilevanti per
+l’editoria. La seconda attività è molto più tecnica e non avremo modo di
+trattarla in questa sede.</li>
+</ol>
+<h3 id="che-cosè-uno-spider">Che cos’è uno spider</h3>
+<p>Per raccogliere dati dal web si usano programmi chiamati
+<em>spider</em> o <em>crawler</em> (sono sinonimi). Questi programmi
+passano da un sito all’altro memorizzando, per semplicità, solo alcuni
+dati. Vediamo un esempio di spider. Come avete visto nelle introduzioni
+alla programmazione che avete letto all’inizio del capitolo, javascript
+può essere usato in un browser per interpretare i programmi inclusi nel
+file html che avete scaricato da un server, ma può essere anche usato
+“autonomamente” sul vostro computer attraverso node ed eseguito in una
+console, in maniera molto simile a quello che si fa con python. In
+questo paragrafo vedremo sempre esempi sia in python sia in javascript.
+Create un file, noi lo chiameremo link_crawler.py e copiatevi le
+seguenti righe</p>
+<div class="sourceCode" id="cb1"><pre
+class="sourceCode python"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> urllib.request <span class="im">import</span> urlopen, urljoin</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> re</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> download_page(url):</span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> urlopen(url).read().decode(<span class="st">&#39;utf-8&#39;</span>)</span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> extract_links(page):</span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a><span class="dv">4</span>   link_regex <span class="op">=</span> re.<span class="bu">compile</span>(<span class="st">&#39;&lt;a[^&gt;]+href=[&quot;</span><span class="ch">\&#39;</span><span class="st">](.*?)[&quot;</span><span class="ch">\&#39;</span><span class="st">]&#39;</span>, re.IGNORECASE)</span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> link_regex.findall(page)</span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> <span class="va">__name__</span> <span class="op">==</span> <span class="st">&#39;__main__&#39;</span>:</span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a><span class="dv">1</span>   target_url <span class="op">=</span> <span class="st">&#39;https://clueb.it/&#39;</span></span>
+<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a><span class="dv">2</span>   clueb <span class="op">=</span> download_page(target_url)</span>
+<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a><span class="dv">3</span>   links <span class="op">=</span> extract_links(clueb)</span>
+<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> link <span class="kw">in</span> links:</span>
+<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a>        <span class="bu">print</span>(urljoin(target_url, link))</span></code></pre></div>
+<p>Eseguitelo in una console linux:</p>
+<div class="sourceCode" id="cb2"><pre
+class="sourceCode bash"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="ex">python3</span>  link_crawler.py <span class="op">&gt;</span> output.csv</span></code></pre></div>
+<p>La versione in javascript, che potete rinominare in link_crawler.js è
+la seguente</p>
+<div class="sourceCode" id="cb3"><pre
+class="sourceCode javascript"><code class="sourceCode javascript"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="kw">const</span> fetch <span class="op">=</span> <span class="pp">require</span>(<span class="st">&#39;isomorphic-fetch&#39;</span>)</span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>target_url <span class="op">=</span> <span class="st">&#39;https://clueb.it/&#39;</span></span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a><span class="kw">let</span> download_page <span class="op">=</span></span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>    <span class="kw">async</span> <span class="kw">function</span>(target_url) {</span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>                <span class="kw">const</span> response <span class="op">=</span> <span class="cf">await</span> <span class="fu">fetch</span>(target_url)<span class="op">;</span></span>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a>                <span class="kw">const</span> text <span class="op">=</span> <span class="cf">await</span> response<span class="op">.</span><span class="fu">text</span>()<span class="op">;</span></span>
+<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a>                <span class="cf">return</span> text<span class="op">.</span><span class="fu">match</span>(<span class="ss">/&lt;a</span><span class="sc">[^&gt;]+</span><span class="ss">href=</span><span class="sc">[&quot;\&#39;](</span><span class="ss">.</span><span class="sc">*?)[&quot;\&#39;]</span><span class="ss">/gi</span>)<span class="op">;</span></span>
+<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a>                <span class="co">// questa espressione regolare dovrebbe restituire il gruppo </span></span>
+<span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a>                <span class="co">// contenuto nelle parentesi &#39;(.*?)&#39; ma in questo caso, a </span></span>
+<span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a>                <span class="co">// causa del flag &#39;/g&#39; non accade ed è necessario un </span></span>
+<span id="cb3-11"><a href="#cb3-11" aria-hidden="true" tabindex="-1"></a>                <span class="co">// secondo &quot;passaggio&quot; come indicato nelle righe successive</span></span>
+<span id="cb3-12"><a href="#cb3-12" aria-hidden="true" tabindex="-1"></a>              }</span>
+<span id="cb3-13"><a href="#cb3-13" aria-hidden="true" tabindex="-1"></a><span class="dv">1</span><span class="op">,</span><span class="dv">2</span> links <span class="op">=</span> <span class="fu">download_page</span>(target_url)</span>
+<span id="cb3-14"><a href="#cb3-14" aria-hidden="true" tabindex="-1"></a><span class="dv">3</span> <span class="cf">for</span> (<span class="kw">let</span> link <span class="kw">of</span> links){</span>
+<span id="cb3-15"><a href="#cb3-15" aria-hidden="true" tabindex="-1"></a><span class="dv">4</span>    <span class="kw">let</span> innerlink <span class="op">=</span> link<span class="op">.</span><span class="fu">match</span>(<span class="ss">/href=</span><span class="sc">[&quot;\&#39;](</span><span class="ss">.</span><span class="sc">*?)[&quot;\&#39;]</span><span class="ss">/</span>)</span>
+<span id="cb3-16"><a href="#cb3-16" aria-hidden="true" tabindex="-1"></a>     <span class="bu">console</span><span class="op">.</span><span class="fu">log</span>(target_url <span class="op">+</span> innerlink)<span class="op">;</span></span>
+<span id="cb3-17"><a href="#cb3-17" aria-hidden="true" tabindex="-1"></a>     }</span></code></pre></div>
+<p>Eseguite questo file in una console node:</p>
+<div class="sourceCode" id="cb4"><pre
+class="sourceCode bash"><code class="sourceCode bash"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="ex">node</span> link_crawler.js</span></code></pre></div>
+<p>Questo programma, così come il precedente, accede alla pagina web <a
+href="https://clueb.it/">clueb.it</a> (1), la scarica (2) e ne estrae i
+link (3). I link sono individuati dall’espressione regolare (4). Per
+costruire un vero e proprio link crawler dovremmo memorizzare tutti i
+link (che sono indirizzi di pagine web) e poi passarli uno a uno alla
+ricerca degli altri link contenuti in quelle pagine: una sorta di
+ricerca ricorsiva. Naturalmente ci ricorderemo delle pagine già viste e
+non torneremo a visitarle se non dopo un certo periodo di tempo.</p>
+<figure>
+<img src="/home/claudio/Dropbox/corso_2019/manuale/grafo2.png"
+alt="Procedura ricorsiva di un link crawler" />
+<figcaption aria-hidden="true">Procedura ricorsiva di un link
+crawler</figcaption>
+</figure>
+<p>Questo è ciò che fa sistematicamente Google. Ma raccogliere e rendere
+ricercabili i contenuti è solo una parte della sua attività, la
+principale, e molto più sofisticata, è eseguire ricerche tenendo conto
+della profilazione dell’utente.</p>
+<h3 id="che-cosè-il-web-scraping">Che cos’è il web scraping</h3>
+<p>Entriamo ora in una singola pagina web alla ricerca di quelli che
+possiamo chiamare “dati”. Vedremo poi di caratterizzare meglio cosa si
+intende per “dato” in questo contesto. Ecco una pagina web, un po’
+semplificata.</p>
+<div class="sourceCode" id="cb5"><pre
+class="sourceCode html"><code class="sourceCode html"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="dt">&lt;!DOCTYPE</span> html<span class="dt">&gt;</span></span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="dt">&lt;</span><span class="kw">html</span><span class="dt">&gt;</span></span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>    <span class="dt">&lt;</span><span class="kw">head</span><span class="dt">&gt;</span></span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>  <span class="dt">&lt;</span><span class="kw">meta</span><span class="ot"> charset</span><span class="op">=</span><span class="st">&quot;UTF-8&quot;</span><span class="dt">&gt;</span></span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a>  <span class="dt">&lt;</span><span class="kw">title</span><span class="dt">&gt;</span> I Promessi Sposi<span class="dt">&lt;/</span><span class="kw">title</span><span class="dt">&gt;</span></span>
+<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a>   <span class="dt">&lt;/</span><span class="kw">head</span><span class="dt">&gt;</span></span>
+<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a><span class="dt">&lt;</span><span class="kw">body</span><span class="dt">&gt;</span></span>
+<span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a>  <span class="dt">&lt;</span><span class="kw">div</span><span class="ot"> itemscope</span><span class="op">=</span><span class="st">&quot;&quot;</span><span class="ot"> itemtype</span><span class="op">=</span><span class="st">&quot;http://schema.org/Book&quot;</span><span class="ot"> itemprop</span><span class="op">=</span><span class="st">&quot;mainEntity&quot;</span><span class="dt">&gt;</span></span>
+<span id="cb5-9"><a href="#cb5-9" aria-hidden="true" tabindex="-1"></a>  <span class="dt">&lt;</span><span class="kw">img</span><span class="ot"> itemprop</span><span class="op">=</span><span class="st">&quot;image&quot;</span><span class="ot"> src</span><span class="op">=</span><span class="st">&quot;https://en.wikipedia.org/wiki/File:Francesco_Hayez_040.jpg&quot;</span></span>
+<span id="cb5-10"><a href="#cb5-10" aria-hidden="true" tabindex="-1"></a><span class="ot">    alt</span><span class="op">=</span><span class="st">&quot;Alessandro Manzoni&quot;</span><span class="dt">/&gt;</span></span>
+<span id="cb5-11"><a href="#cb5-11" aria-hidden="true" tabindex="-1"></a>    <span class="dt">&lt;</span><span class="kw">span</span><span class="ot"> itemprop</span><span class="op">=</span><span class="st">&quot;name&quot;</span><span class="dt">&gt;</span>I promessi sposi<span class="dt">&lt;/</span><span class="kw">span</span><span class="dt">&gt;</span> —</span>
+<span id="cb5-12"><a href="#cb5-12" aria-hidden="true" tabindex="-1"></a>    <span class="dt">&lt;</span><span class="kw">link</span><span class="ot"> itemprop</span><span class="op">=</span><span class="st">&quot;url&quot;</span><span class="ot"> href</span><span class="op">=</span><span class="st">&quot;https://it.wikipedia.org/wiki/I_promessi_sposi&quot;</span><span class="dt">/&gt;&lt;</span><span class="kw">br</span><span class="ot"> </span><span class="dt">/&gt;</span></span>
+<span id="cb5-13"><a href="#cb5-13" aria-hidden="true" tabindex="-1"></a>    di <span class="dt">&lt;</span><span class="kw">a</span><span class="ot"> itemprop</span><span class="op">=</span><span class="st">&quot;author&quot;</span><span class="ot"> href</span><span class="op">=</span><span class="st">&quot;https://it.wikipedia.org/wiki/Alessandro_Manzoni&quot;</span><span class="dt">&gt;</span></span>
+<span id="cb5-14"><a href="#cb5-14" aria-hidden="true" tabindex="-1"></a>      Alessandro Manzoni<span class="dt">&lt;/</span><span class="kw">a</span><span class="dt">&gt;</span></span>
+<span id="cb5-15"><a href="#cb5-15" aria-hidden="true" tabindex="-1"></a>   <span class="dt">&lt;/</span><span class="kw">div</span><span class="dt">&gt;</span></span>
+<span id="cb5-16"><a href="#cb5-16" aria-hidden="true" tabindex="-1"></a>    <span class="dt">&lt;</span><span class="kw">div</span><span class="ot"> itemtype</span><span class="op">=</span><span class="st">&quot;http://schema.org/Offer&quot;</span><span class="ot"> itemscope</span><span class="op">=</span><span class="st">&quot;&quot;</span><span class="ot"> itemprop</span><span class="op">=</span><span class="st">&quot;offers&quot;</span><span class="dt">&gt;</span></span>
+<span id="cb5-17"><a href="#cb5-17" aria-hidden="true" tabindex="-1"></a>      <span class="dt">&lt;</span><span class="kw">span</span><span class="ot"> itemprop</span><span class="op">=</span><span class="st">&quot;name&quot;</span><span class="dt">&gt;</span>I promessi sposi<span class="dt">&lt;/</span><span class="kw">span</span><span class="dt">&gt;&lt;</span><span class="kw">br</span><span class="ot"> </span><span class="dt">/&gt;</span></span>
+<span id="cb5-18"><a href="#cb5-18" aria-hidden="true" tabindex="-1"></a>      <span class="dt">&lt;</span><span class="kw">meta</span><span class="ot"> itemprop</span><span class="op">=</span><span class="st">&quot;priceCurrency&quot;</span><span class="ot"> content</span><span class="op">=</span><span class="st">&quot;EURO&quot;</span><span class="ot"> </span><span class="dt">/&gt;</span></span>
+<span id="cb5-19"><a href="#cb5-19" aria-hidden="true" tabindex="-1"></a>      <span class="dt">&lt;</span><span class="kw">span</span><span class="ot"> itemprop</span><span class="op">=</span><span class="st">&quot;price&quot;</span><span class="dt">&gt;</span>€ 19.95<span class="dt">&lt;/</span><span class="kw">span</span><span class="dt">&gt;</span></span>
+<span id="cb5-20"><a href="#cb5-20" aria-hidden="true" tabindex="-1"></a>      <span class="dt">&lt;</span><span class="kw">link</span><span class="ot"> itemprop</span><span class="op">=</span><span class="st">&quot;availability&quot;</span><span class="ot"> href</span><span class="op">=</span><span class="st">&quot;http://schema.org/InStock&quot;</span><span class="dt">&gt;</span>In Stock</span>
+<span id="cb5-21"><a href="#cb5-21" aria-hidden="true" tabindex="-1"></a>    <span class="dt">&lt;/</span><span class="kw">div</span><span class="dt">&gt;</span></span>
+<span id="cb5-22"><a href="#cb5-22" aria-hidden="true" tabindex="-1"></a><span class="dt">&lt;/</span><span class="kw">div</span><span class="dt">&gt;</span></span>
+<span id="cb5-23"><a href="#cb5-23" aria-hidden="true" tabindex="-1"></a><span class="dt">&lt;/</span><span class="kw">body</span><span class="dt">&gt;</span></span>
+<span id="cb5-24"><a href="#cb5-24" aria-hidden="true" tabindex="-1"></a><span class="dt">&lt;/</span><span class="kw">html</span><span class="dt">&gt;</span></span></code></pre></div>
+<p>Quando digitiamo l’url di una pagina web nel nostro browser
+scarichiamo un file HTML come questo. Oltre a tag strutturali come
+<code>div</code> o semantici come <code>img</code> ne vediamo altri che
+individuano e illustrano aspetti contenutistici: <code>itemtype</code>,
+<code>itemprop</code>. <code>Itemprop</code> individua una proprietà, ad
+esempio il prezzo, di <code>itemtype</code>, l’offerta in vendita di una
+copia dei <em>Promessi Sposi</em>. Qualsiasi contenuto può essere
+rappresentato, graficamente, da HTML e CSS, ma le relazioni fra i
+contenuti restano spesso implicite. Un essere umano è in grado di
+comprendere che se un prezzo è associato a un libro probabilmente si
+tratta di un’offerta di vendita. Ma la lettura automatica ha bisogno che
+gli elementi rilevanti del contesto comunicativo siano resi espliciti:
+<code>itemtype</code> e i diversi <code>itemprop</code> ci dicono che
+abbiamo a che fare con un offerta di un prodotto dotato di prezzo e
+disponibilità. <a
+href="https://developer.mozilla.org/en-US/docs/Web/HTML/Microdata">Mozilla
+Web Docs</a></p>
+<p>Guardiamo ora un esempio di web scraping, preleveremo dati da una
+pagina web. Ricordiamo che il primo passo è stato individuare una serie
+di URL, ora entriamo nelle singole pagine alla ricerca delle
+informazioni che ci interessano. Utilizziamo la libreria python lxml.
+Prendiamo come esempio questa pagina di un sito di e-commerce, scelto in
+maniera abbastanza casuale, <a
+href="&#39;https://www.libreriauniversitaria.it/macroeconomia-prospettiva-europea-blanchard-olivier/libro/9788815265715&#39;">e-commerce</a></p>
+<div class="sourceCode" id="cb6"><pre
+class="sourceCode python"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> lxml <span class="im">import</span> html</span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> lxml <span class="im">import</span> etree</span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> requests</span>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a><span class="dv">1</span>  link <span class="op">=</span> <span class="st">&#39;https://www.libreriauniversitaria.it/macroeconomia-prospettiva-</span><span class="op">\</span></span>
+<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a><span class="st">            europea-blanchard-olivier/libro/9788815265715&#39;</span></span>
+<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a><span class="dv">2</span>  response <span class="op">=</span> requests.get(link)</span>
+<span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a>   sourceCode <span class="op">=</span> response.content</span>
+<span id="cb6-8"><a href="#cb6-8" aria-hidden="true" tabindex="-1"></a>   html_elem <span class="op">=</span> html.fromstring(sourceCode)</span>
+<span id="cb6-9"><a href="#cb6-9" aria-hidden="true" tabindex="-1"></a><span class="dv">3</span>  <span class="cf">for</span> e <span class="kw">in</span> html_elem.xpath(<span class="st">&#39;//ul[@class=&quot;dettagli-prodotto&quot;]/li&#39;</span>):</span>
+<span id="cb6-10"><a href="#cb6-10" aria-hidden="true" tabindex="-1"></a>      <span class="bu">print</span>(e.text_content())</span></code></pre></div>
+<p>In node abbiamo invece (notare la recente libreria
+<code>xpath-html</code>)</p>
+<div class="sourceCode" id="cb7"><pre
+class="sourceCode javascript"><code class="sourceCode javascript"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="kw">const</span> fetch <span class="op">=</span> <span class="pp">require</span>(<span class="st">&#39;isomorphic-fetch&#39;</span>)</span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a><span class="kw">const</span> xpath <span class="op">=</span> <span class="pp">require</span>(<span class="st">&quot;xpath-html&quot;</span>)<span class="op">;</span></span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a><span class="dv">1</span> link <span class="op">=</span> <span class="st">&#39;https://www.libreriauniversitaria.it/macroeconomia-prospettiva-</span><span class="sc">\</span></span>
+<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a><span class="st">          europea-blanchard-olivier/libro/9788815265715&#39;</span></span>
+<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a><span class="fu">fetch</span>(link)</span>
+<span id="cb7-7"><a href="#cb7-7" aria-hidden="true" tabindex="-1"></a><span class="dv">2</span>    <span class="op">.</span><span class="fu">then</span>(<span class="kw">function</span>(response) {</span>
+<span id="cb7-8"><a href="#cb7-8" aria-hidden="true" tabindex="-1"></a>        <span class="co">//La pagina viene prima scaricata e poi trasformata in testo</span></span>
+<span id="cb7-9"><a href="#cb7-9" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> response<span class="op">.</span><span class="fu">text</span>()</span>
+<span id="cb7-10"><a href="#cb7-10" aria-hidden="true" tabindex="-1"></a>    })</span>
+<span id="cb7-11"><a href="#cb7-11" aria-hidden="true" tabindex="-1"></a>    <span class="op">.</span><span class="fu">then</span>(<span class="kw">function</span>(html) {</span>
+<span id="cb7-12"><a href="#cb7-12" aria-hidden="true" tabindex="-1"></a><span class="dv">3</span>      <span class="kw">var</span> nodes <span class="op">=</span> xpath<span class="op">.</span><span class="fu">fromPageSource</span>(html)<span class="op">.</span><span class="fu">findElements</span>(<span class="st">&#39;//ul[@class=&quot;dettagli-prodotto&quot;]/li&#39;</span>)<span class="op">;</span></span>
+<span id="cb7-13"><a href="#cb7-13" aria-hidden="true" tabindex="-1"></a>      <span class="kw">var</span> mynodes <span class="op">=</span> xpath<span class="op">.</span><span class="fu">fromNode</span>(nodes)<span class="op">.</span><span class="fu">findElements</span>(<span class="st">&quot;//li/span&quot;</span>)<span class="op">;</span></span>
+<span id="cb7-14"><a href="#cb7-14" aria-hidden="true" tabindex="-1"></a>      <span class="kw">var</span> res <span class="op">=</span> mynodes<span class="op">.</span><span class="fu">map</span>(x <span class="kw">=&gt;</span> x<span class="op">.</span><span class="fu">getText</span>())<span class="op">;</span></span>
+<span id="cb7-15"><a href="#cb7-15" aria-hidden="true" tabindex="-1"></a>      <span class="bu">console</span><span class="op">.</span><span class="fu">log</span>(res)<span class="op">;</span> <span class="co">// non fate caso ai molti warnings che vedrete, guardate solo al risultato</span></span>
+<span id="cb7-16"><a href="#cb7-16" aria-hidden="true" tabindex="-1"></a>    })</span>
+<span id="cb7-17"><a href="#cb7-17" aria-hidden="true" tabindex="-1"></a>    <span class="op">.</span><span class="fu">catch</span>(<span class="kw">function</span>(err) {</span>
+<span id="cb7-18"><a href="#cb7-18" aria-hidden="true" tabindex="-1"></a>        <span class="bu">console</span><span class="op">.</span><span class="fu">log</span>(<span class="st">&#39;Failed to fetch page: &#39;</span><span class="op">,</span> err)<span class="op">;</span></span>
+<span id="cb7-19"><a href="#cb7-19" aria-hidden="true" tabindex="-1"></a>    })<span class="op">;</span></span></code></pre></div>
+<p>1 è l’URL di una pagina che mette in vendita un noto testo di
+macroeconomia; in 2 viene scaricata la pagina, in 3 attraverso un
+comando Xpath vengono scaricati i dati che ci interessano. Il comando
+Xpath è basato su un’analisi preliminare della pagina. Il programmatore
+ha visto che i dettagli del prodotto erano contenuti in una
+lista(‘//ul/li’), e con uno stile rappresentato da una classe denominata
+“dettagli-prodotto”. Per individuare gli elementi che cerchiamo potremmo
+usare anche i css selectors. Utilizziamo il file HTML già scaricato:</p>
+<div class="sourceCode" id="cb8"><pre
+class="sourceCode python"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>html_elem <span class="op">=</span> html.fromstring(<span class="st">&#39;&#39;&#39;&lt;!DOCTYPE html&gt; &lt;html&gt; &lt;head&gt;…&lt;/div&gt;&lt;/body&gt;&lt;/html&gt;&#39;&#39;&#39;</span>)</span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> lxml.cssselect <span class="im">import</span> CSSSelector</span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>titolo <span class="op">=</span> [ e.text_content() <span class="cf">for</span> e <span class="kw">in</span> html_elem.cssselect(<span class="st">&quot;h1[itemprop=name]&quot;</span>)]</span></code></pre></div>
+<p>In javascript è necessario aggiungere un’altra library dedicata al
+DOM</p>
+<div class="sourceCode" id="cb9"><pre
+class="sourceCode javascript"><code class="sourceCode javascript"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="kw">const</span> jsdom <span class="op">=</span> <span class="pp">require</span>(<span class="st">&quot;jsdom&quot;</span>)<span class="op">;</span></span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a><span class="kw">const</span> { JSDOM } <span class="op">=</span> jsdom<span class="op">;</span></span>
+<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a><span class="fu">fetch</span>(link)<span class="op">.</span><span class="fu">then</span>(<span class="kw">function</span>(response) {</span>
+<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> response<span class="op">.</span><span class="fu">text</span>()</span>
+<span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a>    })<span class="op">.</span><span class="fu">then</span>(<span class="kw">function</span>(html) {</span>
+<span id="cb9-6"><a href="#cb9-6" aria-hidden="true" tabindex="-1"></a>        <span class="kw">var</span> dom <span class="op">=</span> <span class="kw">new</span> <span class="fu">JSDOM</span>(html)<span class="op">;</span></span>
+<span id="cb9-7"><a href="#cb9-7" aria-hidden="true" tabindex="-1"></a>        <span class="kw">var</span> docArticle <span class="op">=</span> dom<span class="op">.</span><span class="at">window</span><span class="op">.</span><span class="at">document</span><span class="op">.</span><span class="fu">querySelector</span>(<span class="st">&#39;ul.dettagli-prodotto li span&#39;</span>)<span class="op">.</span><span class="at">textContent</span><span class="op">;</span></span>
+<span id="cb9-8"><a href="#cb9-8" aria-hidden="true" tabindex="-1"></a>        <span class="kw">var</span> mydocArticle <span class="op">=</span> dom<span class="op">.</span><span class="at">window</span><span class="op">.</span><span class="at">document</span><span class="op">.</span><span class="fu">querySelector</span>(<span class="st">&#39;h1[itemprop]&#39;</span>)<span class="op">.</span><span class="at">textContent</span><span class="op">;</span></span>
+<span id="cb9-9"><a href="#cb9-9" aria-hidden="true" tabindex="-1"></a>        <span class="bu">console</span><span class="op">.</span><span class="fu">log</span>(docArticle)<span class="op">;</span></span>
+<span id="cb9-10"><a href="#cb9-10" aria-hidden="true" tabindex="-1"></a>        <span class="bu">console</span><span class="op">.</span><span class="fu">log</span>(mydocArticle)<span class="op">;</span></span>
+<span id="cb9-11"><a href="#cb9-11" aria-hidden="true" tabindex="-1"></a>    })<span class="op">.</span><span class="fu">catch</span>(<span class="kw">function</span>(err) {</span>
+<span id="cb9-12"><a href="#cb9-12" aria-hidden="true" tabindex="-1"></a>        <span class="bu">console</span><span class="op">.</span><span class="fu">log</span>(<span class="st">&#39;Failed to fetch page: &#39;</span><span class="op">,</span> err)<span class="op">;</span></span>
+<span id="cb9-13"><a href="#cb9-13" aria-hidden="true" tabindex="-1"></a>    })<span class="op">;</span></span></code></pre></div>
+<p>Si potrebbe fare meglio ma per il momento è sufficiente, abbiamo
+ottenuto tutti i dati testuali che stavamo cercando e i tag
+<code>itemtype</code> e <code>itemprop</code> ci hanno aiutato in
+maniera essenziale. Sono tag conosciuti come “microdata” e sono un
+esempio di “dato strutturato”. Torneremo su questo argomento tra poco.
+Per recuperare, e quindi successivamente riutilizzare, i dati che
+otteniamo con questo piccolo web scraper abbiamo sostanzialmente tre
+metodi. Il principale è la ricerca con espressioni regolari. Lo abbiamo
+utilizzato nel link crawler. La ricerca di link era basata sul “pattern”
+che sapevamo costituire un link. L’espressione
+<code>&lt;a[^&gt;]+href=["\'](.*?)["\']</code> individua una serie di
+caratteri del tipo <code>&lt;a href=”example.com”&gt;</code> e
+restituisce solo l’url presente nell’attributo href. Le espressioni
+regolari, presenti in tutti i linguaggi di programmazione, sono forse lo
+strumento più potente per individuare sequenze fisse di caratteri in
+testi privi di tag. Gli altri metodi sono i selettori CSS e l’XPath.
+Entrambi richiedono, diversamente dalle espressioni regolari, che il
+testo da analizzare abbia un “markup” predefinito. Una riga di HTML
+&lt;a title=”un link” href=”example.com”&gt; Un link</a> può essere
+analizzata con il selettore CSS <code>a attr(href)</code>.<br />
+L’XPath è un vero e proprio linguaggio dichiarativo e trova applicazione
+anche nei testi in XML, può contenere funzioni, come
+<code>contains</code>:
+<code>html_elem.xpath('//a[contains(text(), “link”)]/@href)</code>; e
+variabili:
+<code>html_elem.xpath('//a[contains(text(), $var)]/@href', var='link')</code>.</p>
+<p>In questo caso i tre metodi sono sostanzialmente equivalenti ma se il
+testo non contiene tag bisognerà utilizzare le espressioni regolari, in
+un testo taggato se la ricerca è complessa probabilmente si dovrà
+utilizzare l’XPath, in alternativa il CSS selector è in genere il più
+facile da usare. Abbiamo tralasciato il caso in cui il risultato del web
+scraping sia un file JSON invece che HTML. In questo caso si dovrà
+ricorrere a scorciatoie utilizzando svariati metodi di programmazione
+anche se esiste un linguaggio di query simile all’XPath, conosciuto come
+<a href="http://jmespath.org/">Jmspath</a>.</p>
+<p>Ricapitoliamo nuovamente la strada che abbiamo percorso. Per
+esplorare i contenuti diffusi in rete siamo partiti da un link crawler
+per passare poi all’analisi delle singole pagine web. Abbiamo visto
+diversi modi di analizzarne il contenuto con CSS, Xpath ed espressioni
+regolari. I microdata forniscono informazioni che migliorano
+l’efficienza della ricerca.</p>
+<h3 id="i-dati-strutturati">I dati strutturati</h3>
+<p>Siamo ora in grado di accedere a una grande quantità di dati, ma le
+relazioni fra i dati, in un qualche modo ciò che possiamo considerare il
+significato dei dati, rimane di difficile accesso. È necessario
+l’intervento di un operatore umano che formuli quelle query che abbiamo
+visto parlando di CCS selectors, Xpath o espressioni regolari. I
+crawler, come quello di Google, hanno invece bisogno di individuare
+facilmente i metadati di una pagina. A tal fine si usano i “dati
+strutturati”. Ne esistono varie formulazioni, diverse nella sintassi ma
+sostanzialmente equivalenti per funzione. Oltre ai microdati, che
+abbiamo già visto, esistono i formati JSON-LD e RDFa. Per una
+descrizione approfondita si rimanda ai testi citati nelle note
+bibliografiche. Tradizionalmente i metadati, il tag <code>title</code> e
+i diversi <code>meta</code> trovano posto all’interno del tag
+<code>head</code> nella pagina HTML. Sia i microdati che RDFa consentono
+di inserire metadati nel corpo della pagina, JSON-LD anche in un file a
+parte. Per estrarre i metadati possiamo usare, in python, la libreria
+<code>extruct</code>, in javascript il modulo
+<code>microdata-node</code>. Prendiamo nuovamente la pagina della
+libreria online che abbiamo già studiato</p>
+<div class="sourceCode" id="cb10"><pre
+class="sourceCode python"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> extruct</span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> requests</span>
+<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pprint</span>
+<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> w3lib.html <span class="im">import</span> get_base_url</span>
+<span id="cb10-5"><a href="#cb10-5" aria-hidden="true" tabindex="-1"></a><span class="dv">1</span> r <span class="op">=</span> requests.get(<span class="st">&#39;https://www.libreriauniversitaria.it/macroeconomia-</span><span class="op">\</span></span>
+<span id="cb10-6"><a href="#cb10-6" aria-hidden="true" tabindex="-1"></a><span class="st">        prospettiva-europea-blanchard-olivier/libro/9788815265715&#39;</span>)</span>
+<span id="cb10-7"><a href="#cb10-7" aria-hidden="true" tabindex="-1"></a><span class="dv">2</span> base_url <span class="op">=</span> get_base_url(r.text, r.url)</span>
+<span id="cb10-8"><a href="#cb10-8" aria-hidden="true" tabindex="-1"></a><span class="dv">3</span> data <span class="op">=</span> extruct.extract(r.content, base_url<span class="op">=</span>base_url)</span>
+<span id="cb10-9"><a href="#cb10-9" aria-hidden="true" tabindex="-1"></a>  pp <span class="op">=</span> pprint.PrettyPrinter(indent<span class="op">=</span><span class="dv">2</span>)</span>
+<span id="cb10-10"><a href="#cb10-10" aria-hidden="true" tabindex="-1"></a>pp.pprint(data)</span></code></pre></div>
+<p>Nella riga 1 la library <code>requests</code> scarica il file html,
+la riga 2 controlla le url e gli eveentuali riferimenti relativi, la
+riga 3 estrae tutti i dati e <code>pprint</code> li stampa in modo da
+poterli leggere.</p>
+<div class="sourceCode" id="cb11"><pre
+class="sourceCode javascript"><code class="sourceCode javascript"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="kw">const</span> fetch <span class="op">=</span> <span class="pp">require</span>(<span class="st">&#39;isomorphic-fetch&#39;</span>)</span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a><span class="kw">var</span> microdata <span class="op">=</span> <span class="pp">require</span>(<span class="st">&#39;microdata-node&#39;</span>)<span class="op">;</span></span>
+<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a>link <span class="op">=</span> <span class="st">&#39;https://www.libreriauniversitaria.it/macroeconomia-prospettiva-</span><span class="sc">\</span></span>
+<span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a><span class="st">        europea-blanchard-olivier/libro/9788815265715&#39;</span></span>
+<span id="cb11-5"><a href="#cb11-5" aria-hidden="true" tabindex="-1"></a><span class="dv">1</span> <span class="fu">fetch</span>(link)<span class="op">.</span><span class="fu">then</span>(<span class="kw">function</span>(response) {</span>
+<span id="cb11-6"><a href="#cb11-6" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> response<span class="op">.</span><span class="fu">text</span>()</span>
+<span id="cb11-7"><a href="#cb11-7" aria-hidden="true" tabindex="-1"></a>    })<span class="op">.</span><span class="fu">then</span>(<span class="kw">function</span>(html) {</span>
+<span id="cb11-8"><a href="#cb11-8" aria-hidden="true" tabindex="-1"></a><span class="dv">2</span>        <span class="kw">var</span> json <span class="op">=</span> microdata<span class="op">.</span><span class="fu">toJson</span>(html<span class="op">,</span> {</span>
+<span id="cb11-9"><a href="#cb11-9" aria-hidden="true" tabindex="-1"></a>                    <span class="dt">base</span><span class="op">:</span> <span class="st">&#39;https://www.libreriauniversitaria.it&#39;</span></span>
+<span id="cb11-10"><a href="#cb11-10" aria-hidden="true" tabindex="-1"></a>                    })<span class="op">;</span></span>
+<span id="cb11-11"><a href="#cb11-11" aria-hidden="true" tabindex="-1"></a><span class="dv">3</span>        <span class="kw">var</span> jsonld <span class="op">=</span> microdata<span class="op">.</span><span class="fu">toJsonld</span>(html<span class="op">,</span> {</span>
+<span id="cb11-12"><a href="#cb11-12" aria-hidden="true" tabindex="-1"></a>                    <span class="dt">base</span><span class="op">:</span> <span class="st">&#39;https://www.libreriauniversitaria.it&#39;</span></span>
+<span id="cb11-13"><a href="#cb11-13" aria-hidden="true" tabindex="-1"></a>                  })<span class="op">;</span></span>
+<span id="cb11-14"><a href="#cb11-14" aria-hidden="true" tabindex="-1"></a>        <span class="bu">console</span><span class="op">.</span><span class="fu">log</span>(<span class="bu">JSON</span><span class="op">.</span><span class="fu">stringify</span>(json<span class="op">,</span> <span class="kw">null</span><span class="op">,</span> <span class="dv">2</span>))<span class="op">;</span></span>
+<span id="cb11-15"><a href="#cb11-15" aria-hidden="true" tabindex="-1"></a>        <span class="bu">console</span><span class="op">.</span><span class="fu">log</span>(<span class="bu">JSON</span><span class="op">.</span><span class="fu">stringify</span>(jsonld<span class="op">,</span> <span class="kw">null</span><span class="op">,</span> <span class="dv">2</span>))<span class="op">;</span></span>
+<span id="cb11-16"><a href="#cb11-16" aria-hidden="true" tabindex="-1"></a>    })<span class="op">.</span><span class="fu">catch</span>(<span class="kw">function</span>(err) {</span>
+<span id="cb11-17"><a href="#cb11-17" aria-hidden="true" tabindex="-1"></a>        <span class="bu">console</span><span class="op">.</span><span class="fu">log</span>(<span class="st">&#39;Failed to fetch page: &#39;</span><span class="op">,</span> err)<span class="op">;</span></span>
+<span id="cb11-18"><a href="#cb11-18" aria-hidden="true" tabindex="-1"></a>    })<span class="op">;</span></span></code></pre></div>
+<p>In maniera simile javascript scarica alla riga 1 il file html (in
+maniera asincrona), alla riga 2 avviene l’estrazione dei dati secondo il
+formato <code>microdata</code> mentre alla riga 3 in
+<code>jsonld</code>. Il risultato sono due file JSON con i dati
+strutturati contenuti nella pagina rappresentati nei diversi formati. I
+dati estratti sono troppi per essere riportati in queste pagine e
+rimandiamo al sito allegato. Eccone solo un estratto:</p>
+<div class="sourceCode" id="cb12"><pre
+class="sourceCode python"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>{</span>
+<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a>    <span class="st">&quot;microdata&quot;</span>: [</span>
+<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a>        {</span>
+<span id="cb12-4"><a href="#cb12-4" aria-hidden="true" tabindex="-1"></a>            <span class="st">&quot;type&quot;</span>: <span class="st">&quot;http://schema.org/WebPage&quot;</span>,</span>
+<span id="cb12-5"><a href="#cb12-5" aria-hidden="true" tabindex="-1"></a>            <span class="st">&quot;id&quot;</span>: <span class="st">&quot;https://www.libreriauniversitaria.it/macroeconomia-</span><span class="op">\</span></span>
+<span id="cb12-6"><a href="#cb12-6" aria-hidden="true" tabindex="-1"></a><span class="st">                prospettiva-europea-blanchard-olivier/libro/9788815265715&quot;</span>,</span>
+<span id="cb12-7"><a href="#cb12-7" aria-hidden="true" tabindex="-1"></a>            <span class="st">&quot;properties&quot;</span>: {</span>
+<span id="cb12-8"><a href="#cb12-8" aria-hidden="true" tabindex="-1"></a>                <span class="st">&quot;breadcrumb&quot;</span>: {},</span>
+<span id="cb12-9"><a href="#cb12-9" aria-hidden="true" tabindex="-1"></a>                <span class="st">&quot;mainEntity&quot;</span>: {},</span>
+<span id="cb12-10"><a href="#cb12-10" aria-hidden="true" tabindex="-1"></a>                        ......</span>
+<span id="cb12-11"><a href="#cb12-11" aria-hidden="true" tabindex="-1"></a>            }</span>
+<span id="cb12-12"><a href="#cb12-12" aria-hidden="true" tabindex="-1"></a>        }</span>
+<span id="cb12-13"><a href="#cb12-13" aria-hidden="true" tabindex="-1"></a>    ]</span>
+<span id="cb12-14"><a href="#cb12-14" aria-hidden="true" tabindex="-1"></a>    .....</span>
+<span id="cb12-15"><a href="#cb12-15" aria-hidden="true" tabindex="-1"></a>  }</span></code></pre></div>
+<p>Per farci un’idea di come Google usi queste informazioni riportiamo
+un esempio tratto da <a
+href="https://developers.google.com/search/docs/guides/intro-structured-data#structured-data">Google</a></p>
+<div class="sourceCode" id="cb13"><pre
+class="sourceCode html"><code class="sourceCode html"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="dt">&lt;</span><span class="kw">script</span><span class="ot"> type=</span><span class="st">&quot;application/ld+json&quot;</span><span class="dt">&gt;</span></span>
+<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a>    {</span>
+<span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a>      <span class="st">&quot;@context&quot;</span><span class="op">:</span> <span class="st">&quot;https://schema.org/&quot;</span><span class="op">,</span></span>
+<span id="cb13-4"><a href="#cb13-4" aria-hidden="true" tabindex="-1"></a>      <span class="st">&quot;@type&quot;</span><span class="op">:</span> <span class="st">&quot;Recipe&quot;</span><span class="op">,</span></span>
+<span id="cb13-5"><a href="#cb13-5" aria-hidden="true" tabindex="-1"></a>      <span class="st">&quot;name&quot;</span><span class="op">:</span> <span class="st">&quot;Apple Pie by Grandma&quot;</span><span class="op">,</span></span>
+<span id="cb13-6"><a href="#cb13-6" aria-hidden="true" tabindex="-1"></a>      <span class="st">&quot;author&quot;</span><span class="op">:</span> <span class="st">&quot;Elaine Smith&quot;</span><span class="op">,</span></span>
+<span id="cb13-7"><a href="#cb13-7" aria-hidden="true" tabindex="-1"></a>      <span class="st">&quot;image&quot;</span><span class="op">:</span> <span class="st">&quot;http://images.edge-generalmills.com/56459281-6fe6-4d9d-984f-385c9488d824.jpg&quot;</span><span class="op">,</span></span>
+<span id="cb13-8"><a href="#cb13-8" aria-hidden="true" tabindex="-1"></a>      <span class="st">&quot;description&quot;</span><span class="op">:</span> <span class="st">&quot;A classic apple pie.&quot;</span><span class="op">,</span></span>
+<span id="cb13-9"><a href="#cb13-9" aria-hidden="true" tabindex="-1"></a>      <span class="st">&quot;aggregateRating&quot;</span><span class="op">:</span> {</span>
+<span id="cb13-10"><a href="#cb13-10" aria-hidden="true" tabindex="-1"></a>        <span class="st">&quot;@type&quot;</span><span class="op">:</span> <span class="st">&quot;AggregateRating&quot;</span><span class="op">,</span></span>
+<span id="cb13-11"><a href="#cb13-11" aria-hidden="true" tabindex="-1"></a>        <span class="st">&quot;ratingValue&quot;</span><span class="op">:</span> <span class="st">&quot;4.8&quot;</span><span class="op">,</span></span>
+<span id="cb13-12"><a href="#cb13-12" aria-hidden="true" tabindex="-1"></a>        <span class="st">&quot;reviewCount&quot;</span><span class="op">:</span> <span class="st">&quot;7462&quot;</span><span class="op">,</span></span>
+<span id="cb13-13"><a href="#cb13-13" aria-hidden="true" tabindex="-1"></a>        <span class="st">&quot;bestRating&quot;</span><span class="op">:</span> <span class="st">&quot;5&quot;</span><span class="op">,</span></span>
+<span id="cb13-14"><a href="#cb13-14" aria-hidden="true" tabindex="-1"></a>        <span class="st">&quot;worstRating&quot;</span><span class="op">:</span> <span class="st">&quot;1&quot;</span></span>
+<span id="cb13-15"><a href="#cb13-15" aria-hidden="true" tabindex="-1"></a>      }<span class="op">,</span></span>
+<span id="cb13-16"><a href="#cb13-16" aria-hidden="true" tabindex="-1"></a>      <span class="st">&quot;prepTime&quot;</span><span class="op">:</span> <span class="st">&quot;PT30M&quot;</span><span class="op">,</span></span>
+<span id="cb13-17"><a href="#cb13-17" aria-hidden="true" tabindex="-1"></a>      <span class="st">&quot;totalTime&quot;</span><span class="op">:</span> <span class="st">&quot;PT1H30M&quot;</span><span class="op">,</span></span>
+<span id="cb13-18"><a href="#cb13-18" aria-hidden="true" tabindex="-1"></a>      <span class="st">&quot;recipeYield&quot;</span><span class="op">:</span> <span class="st">&quot;8&quot;</span><span class="op">,</span></span>
+<span id="cb13-19"><a href="#cb13-19" aria-hidden="true" tabindex="-1"></a>      <span class="st">&quot;nutrition&quot;</span><span class="op">:</span> {</span>
+<span id="cb13-20"><a href="#cb13-20" aria-hidden="true" tabindex="-1"></a>        <span class="st">&quot;@type&quot;</span><span class="op">:</span> <span class="st">&quot;NutritionInformation&quot;</span><span class="op">,</span></span>
+<span id="cb13-21"><a href="#cb13-21" aria-hidden="true" tabindex="-1"></a>        <span class="st">&quot;calories&quot;</span><span class="op">:</span> <span class="st">&quot;512 calories&quot;</span></span>
+<span id="cb13-22"><a href="#cb13-22" aria-hidden="true" tabindex="-1"></a>      }<span class="op">,</span></span>
+<span id="cb13-23"><a href="#cb13-23" aria-hidden="true" tabindex="-1"></a>      <span class="st">&quot;recipeIngredient&quot;</span><span class="op">:</span> [</span>
+<span id="cb13-24"><a href="#cb13-24" aria-hidden="true" tabindex="-1"></a>        <span class="st">&quot;1 box refrigerated pie crusts, softened as directed on box&quot;</span><span class="op">,</span></span>
+<span id="cb13-25"><a href="#cb13-25" aria-hidden="true" tabindex="-1"></a>        <span class="st">&quot;6 cups thinly sliced, peeled apples (6 medium)&quot;</span></span>
+<span id="cb13-26"><a href="#cb13-26" aria-hidden="true" tabindex="-1"></a>      ]</span>
+<span id="cb13-27"><a href="#cb13-27" aria-hidden="true" tabindex="-1"></a>    }</span>
+<span id="cb13-28"><a href="#cb13-28" aria-hidden="true" tabindex="-1"></a>    <span class="dt">&lt;/</span><span class="kw">script</span><span class="dt">&gt;</span></span></code></pre></div>
+<p>Questo script JSON (contenente dati in JSON-LD) viene utilizzato da
+Google nel modo mostrato nella seguente immagine.</p>
+<figure>
+<img src="https://claudiotubertini.github.io/editoria/google_jsonld.png"
+title="Google JSON-LD" alt="Esempio tratto da Google Search" />
+<figcaption aria-hidden="true">Esempio tratto da Google
+Search</figcaption>
+</figure>
+<p>La presenza di dati strutturati nelle pagine web si è andata
+diffondendo e ora circa il 53% di tutti i siti ne usa uno o più tipi.
+Questa è la distribuzione dell’uso di dati strutturati tratta da <a
+href="https://w3techs.com/technologies/overview/structured_data/all">w3techs</a></p>
+<figure>
+<img
+src="https://claudiotubertini.github.io/editoria/structured_data_stats.png"
+title="Structured data stats" alt="Statistica usi dati strutturati" />
+<figcaption aria-hidden="true">Statistica usi dati
+strutturati</figcaption>
+</figure>
+<p>Come abbiamo visto anche nel nostro esempio, spesso vengono usati più
+formati nella stessa pagina. In questi diversi formati il dato che
+cerchiamo ha la forma usuale di un oggetto con un certo valore che
+soddisfa un predicato, si parla quindi di “triplette”: oggetto,
+predicato, valore. Oggetto e predicato dovrebbero essere delle URI, il
+valore a volte non potrà che essere un numero o una stringa, ma se è a
+sua volta un’URI, tanto meglio. Prendiamo l’RDFa riportato nella pagina
+precedente. L’oggetto è la nostra solita pagina web</p>
+<div class="sourceCode" id="cb14"><pre
+class="sourceCode html"><code class="sourceCode html"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a>&quot;@id&quot;: &quot;https://www.libreriauniversitaria.it/macroeconomia-prospettiva-europea-blanchard-olivier/libro/9788815265715&quot;</span></code></pre></div>
+<p>a cui si può applicare la relazione denominata ‘description’ (che i
+logici chiamano predicato)</p>
+<div class="sourceCode" id="cb15"><pre
+class="sourceCode html"><code class="sourceCode html"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a>&quot;http://ogp.me/ns#description&quot;</span></code></pre></div>
+<p>che ha il valore:</p>
+<div class="sourceCode" id="cb16"><pre
+class="sourceCode html"><code class="sourceCode html"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a>&quot;@value&quot;: &quot;Obiettivo del manuale - qui presentato in una nuova edizione radicalmente aggiornata anche nell&#39;impianto teorico - è fornire una visione generale e integrata della macroeconomia post-crisi, adottando un modello di base che studia l&#39;economia nel breve, nel medio e nel lungo periodo. Tale modello v ...&quot;</span></code></pre></div>
+<p>Graficamente: <img
+src="https://claudiotubertini.github.io/editoria/rdf_graph_new.png"
+title="RDFa" alt="RDFa" /></p>
+<p>Le relazione <code>http://ogp.me/#description</code> fa riferimento
+al vocabolario di entità e relazioni introdotte da OpenGraph Protocol
+<code>http://ogp.me/</code>, ma ve ne sono altre, altrettanto diffuse,
+ad esempio <code>https://schema.org</code>.</p>
+<h2 id="contenuti-interattivi">3. Contenuti interattivi</h2>
+<p>Abbiamo visto all’opera il web di documenti: come si possono
+comunicare dati e informazioni. Proveremo ora a guardare un po’ più
+approfonditamente come si possono modificare i documenti in maniera
+dinamica, raccogliere e visualizzare dati, intesi come contenuti
+concettuali e non come dati “atomici” come abbiamo visto nella sezione
+precedente. Ora ci concentreremo sul lato utente (programmazione
+client-side), su quello che avviene nel browser subito prima, durante e
+subito dopo aver scaricato un file da un server web, termineremo la
+sezione con una rapida carrellata di come i contenuti si possano
+conservare efficacemente in strutture note come basi di dati.</p>
+<h3 id="visualizzazione-client-side">Visualizzazione client-side</h3>
+<p>Non ci sono in genere problemi a gestire testi e immagini in HTML, di
+cui avete visto qualche esempio nella sezione dedicata al web scraping,
+ma spesso vorremmo consentire al lettore un certo livello di
+interattività. Le tipiche azioni sono la ricerca, la scelta, la modifica
+e la memorizzazione degli elementi desiderati.Queste azioni possono
+essere svolte sia sul server remoto, che in remoto preparerà una nuova
+pagina e la invierà al lettore, ma spesso vendono svolte anche nel
+browser, e solo alcuni dati vengono salvati su un database. Questa
+programmazione, quando avviene sul server è fatta in vari linguaggi
+(PHP, Python, Ruby, C# e NodeJS - JavaScript) ma è sempre fatta in
+javascript quando avviene sul client. Interattività vuol dire
+memorizzare i successivi stati in cui passa la pagina, mostrarli
+all’utente e reagire agli eventi (click, trascinamenti, selezioni,
+ecc.). A questo proposito sono stati sviluppati dei frameworks che
+aiutano e semplificano il lavoro. I più diffusi sono <a
+href="https://vuejs.org/">Vuejs</a>, <a
+href="https://reactjs.org/">React</a>, <a
+href="https://angular.io/">Angular</a>. Non avremo modo di trattare
+neppure di sfuggita questi strumenti, ma ci concentreremo invece su
+alcuni aspetti, la modifica del DOM, l’inserimento di contenuti nella
+pagina che sono comunque utili alla comprensione dei meccanismi con cui
+operano i frameworks client-side. Ci occuperemo ora di uno dei temi più
+interessanti, sia da un punto di vista contenutistico-editoriale, sia da
+un punto di vista più squisitamente tecnico: la visualizzazione e
+rappresentazione dati utilizzando una delle più diffuse librerie, <a
+href="https://d3js.org/">D3</a>. Il processo consiste sostanzialmente di
+tre fasi: il recupero dei dati, la loro modifica, selezione,
+integrazione secondo gli scopi che si è posto l’autore, la pubblicazione
+sulla pagina web, come semplice immagine, jpg o png, come pagina fissa,
+pdf, o meglio come elemento html. La visualizzazione dati è argomento
+abbastanza vasto ma riportiamo qui una serie di esempi che possono
+servire come punti di <a
+href="https://github.com/wbkd/awesome-interactive-journalism">riferimento</a>.
+Noi ci limiteremo a qualche piccolo passo restando però all’interno
+della programmazione web</p>
+<p>Il recupero dei dati, la gestione, selezione, il calcolo delle
+statistiche può essere fatto in Python o in R. Il risultato deve essere
+trasformato in html o passato a una libreria javascript per ottenere
+l’interattività sulla pagina web. Il modo in cui trattare i dati può
+essere suddiviso in una serie di passi come i seguenti (questo è un
+esempio scritto in R, i dati provengono da <a
+href="https://ggplot2.tidyverse.org/reference/mpg.html">mpg</a>, ecco un
+esempio di <a
+href="https://rpubs.com/shailesh/mpg-exploration">esplorazione di
+dati</a>. MPG è un database didattico che viene installato insieme a
+<code>ggplot</code>, che raccoglie i consumi di carburante di alcune
+marche automobilistiche)</p>
+<div class="sourceCode" id="cb17"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(mpg, <span class="fu">aes</span>(displ, hwy)) <span class="sc">+</span> <span class="fu">geom_point</span>(<span class="fu">aes</span>(<span class="at">color =</span> class)) <span class="sc">+</span></span>
+<span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_smooth</span>(<span class="at">se =</span> <span class="cn">FALSE</span>) <span class="sc">+</span></span>
+<span id="cb17-3"><a href="#cb17-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">&quot;Fuel efficiency generally</span></span>
+<span id="cb17-4"><a href="#cb17-4" aria-hidden="true" tabindex="-1"></a><span class="st">        decreases with engine size&quot;</span>)</span></code></pre></div>
+<figure>
+<img src="/home/claudio/Dropbox/corso_2019/manuale/mpg.png"
+alt="Grafico" />
+<figcaption aria-hidden="true">Grafico</figcaption>
+</figure>
+<p><code>ggplot</code> è la funzione che genera il grafico,
+<code>mpg</code> è l’oggetto, la struttura dati su cui si applicano le
+successive operazioni; vengono scelte le variabili <code>displ</code>
+(cilindrata, in litri) e <code>hwy</code> (galloni per miglio di
+autostrada), si applica poi una statistica, in questo caso una funzione
+polinomiale senza mostrare l’intervallo di confidenza
+(<code>se=FALSE</code>). Infine si aggiungono legenda, etichette ed
+altri elementi che aiutano la lettura.<br />
+<img src="/home/claudio/Dropbox/corso_2019/manuale/mpg_bar.png"
+alt="Grafico a barre" /><br />
+<em>Consumi in funzione della marca automobilistica</em></p>
+<p><img src="/home/claudio/Dropbox/corso_2019/manuale/mpg_bar_2.png"
+alt="Barre normalizzate" /><br />
+<em>Consumi normalizzati in funzione della marca automobilistca</em></p>
+<p><img src="/home/claudio/Dropbox/corso_2019/manuale/mpg_3.png"
+alt="Relazione fra consumi in città e su autostrada" /><br />
+<em>Relazione fra i consumi nel traffico cittadino e in quello
+autostradale</em></p>
+<p>Questa procedura, “per strati”“, è presente anche in D3 (e in molte
+altre librerie in vari linguaggi) e ha ricevuto anche un nome <a
+href="https://www.springer.com/gp/book/9780387245447">The Grammar of
+Graphics</a>, per una veloce introduzione leggete <a
+href="http://vita.had.co.nz/papers/layered-grammar.pdf">A layered
+grammar of graphics</a> di Hadley Wickham. Un approccio completamente
+diverso è disegnare direttamente nella pagina HTML attraverso l’elemento
+<code>&lt;canvas&gt;</code>. Per farsi un’idea un po’ più compiuta si
+rimanda a <a
+href="https://developer.mozilla.org/en-US/docs/Web/API/Canvas_API/Tutorial">Canvas
+tutorial</a> . Prendiamo in considerazione il file
+<code>canvas_example.html</code> che trovate nella pagina github, di cui
+riportiamo qui solo lo script:</p>
+<div class="sourceCode" id="cb18"><pre
+class="sourceCode javascript"><code class="sourceCode javascript"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="dv">1</span> <span class="kw">const</span> canvas <span class="op">=</span> <span class="bu">document</span><span class="op">.</span><span class="fu">querySelector</span>(<span class="st">&#39;.myCanvas&#39;</span>)<span class="op">;</span></span>
+<span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a><span class="kw">const</span> width <span class="op">=</span> canvas<span class="op">.</span><span class="at">width</span> <span class="op">=</span> <span class="bu">window</span><span class="op">.</span><span class="at">innerWidth</span><span class="op">;</span></span>
+<span id="cb18-3"><a href="#cb18-3" aria-hidden="true" tabindex="-1"></a><span class="kw">const</span> height <span class="op">=</span> canvas<span class="op">.</span><span class="at">height</span> <span class="op">=</span> <span class="bu">window</span><span class="op">.</span><span class="at">innerHeight</span><span class="op">;</span></span>
+<span id="cb18-4"><a href="#cb18-4" aria-hidden="true" tabindex="-1"></a><span class="dv">2</span> <span class="kw">const</span> ctx <span class="op">=</span> canvas<span class="op">.</span><span class="fu">getContext</span>(<span class="st">&#39;2d&#39;</span>)<span class="op">;</span></span>
+<span id="cb18-5"><a href="#cb18-5" aria-hidden="true" tabindex="-1"></a><span class="dv">3</span> ctx<span class="op">.</span><span class="at">fillStyle</span> <span class="op">=</span> <span class="st">&#39;rgb(0,0,0)&#39;</span><span class="op">;</span></span>
+<span id="cb18-6"><a href="#cb18-6" aria-hidden="true" tabindex="-1"></a>ctx<span class="op">.</span><span class="fu">fillRect</span>(<span class="dv">0</span><span class="op">,</span><span class="dv">0</span><span class="op">,</span>width<span class="op">,</span>height)<span class="op">;</span></span>
+<span id="cb18-7"><a href="#cb18-7" aria-hidden="true" tabindex="-1"></a>ctx<span class="op">.</span><span class="at">fillStyle</span> <span class="op">=</span> <span class="st">&#39;rgb(255,0,0)&#39;</span><span class="op">;</span></span>
+<span id="cb18-8"><a href="#cb18-8" aria-hidden="true" tabindex="-1"></a>ctx<span class="op">.</span><span class="fu">fillRect</span>(<span class="dv">50</span><span class="op">,</span><span class="dv">50</span><span class="op">,</span><span class="dv">100</span><span class="op">,</span><span class="dv">150</span>)<span class="op">;</span></span>
+<span id="cb18-9"><a href="#cb18-9" aria-hidden="true" tabindex="-1"></a>ctx<span class="op">.</span><span class="at">fillStyle</span> <span class="op">=</span> <span class="st">&#39;rgb(0,255,0)&#39;</span><span class="op">;</span></span>
+<span id="cb18-10"><a href="#cb18-10" aria-hidden="true" tabindex="-1"></a>ctx<span class="op">.</span><span class="fu">fillRect</span>(<span class="dv">75</span><span class="op">,</span><span class="dv">75</span><span class="op">,</span><span class="dv">100</span><span class="op">,</span><span class="dv">100</span>)<span class="op">;</span></span>
+<span id="cb18-11"><a href="#cb18-11" aria-hidden="true" tabindex="-1"></a>ctx<span class="op">.</span><span class="at">fillStyle</span> <span class="op">=</span> <span class="st">&#39;rgba(255,0,255,0.75)&#39;</span><span class="op">;</span></span>
+<span id="cb18-12"><a href="#cb18-12" aria-hidden="true" tabindex="-1"></a>ctx<span class="op">.</span><span class="fu">fillRect</span>(<span class="dv">25</span><span class="op">,</span><span class="dv">100</span><span class="op">,</span><span class="dv">175</span><span class="op">,</span><span class="dv">50</span>)<span class="op">;</span></span>
+<span id="cb18-13"><a href="#cb18-13" aria-hidden="true" tabindex="-1"></a>ctx<span class="op">.</span><span class="at">strokeStyle</span> <span class="op">=</span> <span class="st">&#39;rgb(255,255,255)&#39;</span><span class="op">;</span></span>
+<span id="cb18-14"><a href="#cb18-14" aria-hidden="true" tabindex="-1"></a>ctx<span class="op">.</span><span class="at">lineWidth</span> <span class="op">=</span> <span class="dv">5</span><span class="op">;</span></span>
+<span id="cb18-15"><a href="#cb18-15" aria-hidden="true" tabindex="-1"></a>ctx<span class="op">.</span><span class="fu">strokeRect</span>(<span class="dv">25</span><span class="op">,</span><span class="dv">25</span><span class="op">,</span><span class="dv">175</span><span class="op">,</span><span class="dv">200</span>)<span class="op">;</span></span></code></pre></div>
+<p>L’elemento <code>&lt;canvas&gt;</code> è accessibile tramite un’API
+che consente di disegnare utilizzando javascript. Nella prima riga si
+accede al DOM individuando un elemento dotato della classe
+<code>myCanvas</code>, stabilite le dimensioni del canvas si costruisce
+(2) un oggetto, in questo caso a due dimensioni, potrebbe essere anche
+<code>webgl</code> (a tre dimensioni). Nelle righe successive vengono
+disegnati una serie di rettangoli. Affinché l’immagine sia dinamica
+(appaia modificata) è necessario cancellare e ridisegnare l’intera
+immagine. Si può anche inserire all’interno di canvas un’immagine svg
+generata con un editor come <a href="https://inkscape.org/">Inkscape</a>
+o <a href="https://www.adobe.com/products/illustrator.html">Adobe
+Illustrator</a>. Esiste una “terza via” ed è servirsi di <a
+href="https://d3js.org/"><code>D3</code></a> una libreria in grado di
+produrre rappresentazioni grafiche di ottimo livello, che si inseriscono
+facilmente nel DOM e che ben si prestano a una lettura interattiva. Ecco
+qualche <a href="https://observablehq.com/@d3/gallery">esempio</a>.
+Vediamo nelle linee generali come si procede. Il primo passo è
+recuperare i dati che verranno rappresentati nella pagina web. Per farlo
+in javascript leggete l’ottimo <a
+href="https://observablehq.com/@dakoop/learn-js-data">Learn JS Data</a>
+che illustra i concetti base dell’analisi dei dati, analisi che in
+Python viene fatta con <a
+href="https://pandas.pydata.org/docs/getting_started/intro_tutorials/">pandas</a>,
+in <code>R</code> con <a
+href="https://www.tidyverse.org/packages/">tidyverse</a>. Nel file
+<code>index_1.html</code> trovate il primo passaggio, il caricamento dei
+dati.</p>
+<div class="sourceCode" id="cb19"><pre
+class="sourceCode html"><code class="sourceCode html"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="dt">&lt;</span><span class="kw">script</span><span class="dt">&gt;</span></span>
+<span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a>  <span class="kw">function</span> <span class="fu">test</span>(){</span>
+<span id="cb19-3"><a href="#cb19-3" aria-hidden="true" tabindex="-1"></a>  d3<span class="op">.</span><span class="fu">csv</span>(<span class="st">&quot;https://claudiotubertini.github.io/WHOmanities/covid_italy.csv&quot;</span>)</span>
+<span id="cb19-4"><a href="#cb19-4" aria-hidden="true" tabindex="-1"></a>      <span class="op">.</span><span class="fu">then</span>(data <span class="kw">=&gt;</span> data<span class="op">.</span><span class="fu">map</span>(x <span class="kw">=&gt;</span> {<span class="cf">return</span> {</span>
+<span id="cb19-5"><a href="#cb19-5" aria-hidden="true" tabindex="-1"></a>        <span class="dt">day</span><span class="op">:</span> x[<span class="st">&quot;day&quot;</span>]<span class="op">,</span></span>
+<span id="cb19-6"><a href="#cb19-6" aria-hidden="true" tabindex="-1"></a>        <span class="dt">Region</span><span class="op">:</span> x[<span class="st">&quot;Region&quot;</span>]<span class="op">,</span></span>
+<span id="cb19-7"><a href="#cb19-7" aria-hidden="true" tabindex="-1"></a>        <span class="dt">country</span><span class="op">:</span> x[<span class="st">&quot;Country Name&quot;</span>]<span class="op">,</span></span>
+<span id="cb19-8"><a href="#cb19-8" aria-hidden="true" tabindex="-1"></a>        <span class="dt">Confirmed</span><span class="op">:</span> <span class="op">+</span>x[<span class="st">&quot;Confirmed&quot;</span>]<span class="op">,</span></span>
+<span id="cb19-9"><a href="#cb19-9" aria-hidden="true" tabindex="-1"></a>        <span class="st">&quot;Cumulative Confirmed&quot;</span><span class="op">:</span> <span class="op">+</span>x[<span class="st">&quot;Cumulative Confirmed&quot;</span>]}}))</span>
+<span id="cb19-10"><a href="#cb19-10" aria-hidden="true" tabindex="-1"></a>      <span class="op">.</span><span class="fu">then</span>(<span class="kw">function</span>(data){<span class="cf">return</span> <span class="bu">console</span><span class="op">.</span><span class="fu">log</span>(<span class="bu">JSON</span><span class="op">.</span><span class="fu">stringify</span>(data<span class="op">,</span> <span class="kw">null</span><span class="op">,</span> <span class="dv">2</span>))})<span class="op">;</span></span>
+<span id="cb19-11"><a href="#cb19-11" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb19-12"><a href="#cb19-12" aria-hidden="true" tabindex="-1"></a><span class="dt">&lt;/</span><span class="kw">script</span><span class="dt">&gt;</span></span>
+<span id="cb19-13"><a href="#cb19-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb19-14"><a href="#cb19-14" aria-hidden="true" tabindex="-1"></a><span class="dt">&lt;/</span><span class="kw">head</span><span class="dt">&gt;</span></span>
+<span id="cb19-15"><a href="#cb19-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb19-16"><a href="#cb19-16" aria-hidden="true" tabindex="-1"></a><span class="dt">&lt;</span><span class="kw">body</span><span class="ot"> onload</span><span class="op">=</span><span class="st">&quot;test()&quot;</span><span class="dt">&gt;</span></span></code></pre></div>
+<p><code>D3</code> ha funzioni che caricano file in diversi formati. Ho
+utilizzato i dati della pandemia di Covid prelevati dal sito <a
+href="https://data.europa.eu/euodp/en/data/dataset/covid-19-coronavirus-data">European
+Centre for Disease Prevention and Control</a> dove è disponibile
+pubblicamente un file csv con i dati suddivisi per nazione. Sul sito
+dedicagto a questo volume trovate i dati di Italia e Germania dal 28
+gennaio al 15 maggio 2020. La funzione <code>d3.csv(url)</code> ha le
+caratteristica di una funzione asincrona, ricevuta la risposta procede a
+scaricare solo i dati indicati,
+<code>data.map(x =&gt; { return {}})</code> applica a ogni riga del file
+csv la funzione che vedete, sceglie cioè solo alcuni campi, gli altri
+non sono necessari. Oltre alla data, la nazione (scaricheremo sia Italia
+che Germania, quindi ci serve), scarica sia i “confermati”, cioè il
+numero di ammalati di un certo giorno, che il valore cumulato. Infine,
+terminata questa operazione, stampa nella console il risultato
+producendo anche un’impaginazione leggibile. Ritornando all’idea di
+grammatica a strati guardiamo ora come possiamo inserire i dati negli
+elementi della pagina html, vedremo poi come rappresentarli
+graficamente, come formulare tutto il necessario: assi, linee, punti,
+etichette, ecc. Come possiamo modificare la nostra pagina?</p>
+<div class="sourceCode" id="cb20"><pre
+class="sourceCode html"><code class="sourceCode html"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="dt">&lt;!DOCTYPE</span> html<span class="dt">&gt;</span></span>
+<span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a><span class="dt">&lt;</span><span class="kw">html</span><span class="ot"> lang</span><span class="op">=</span><span class="st">&quot;it&quot;</span><span class="dt">&gt;</span></span>
+<span id="cb20-3"><a href="#cb20-3" aria-hidden="true" tabindex="-1"></a>  <span class="dt">&lt;</span><span class="kw">head</span><span class="dt">&gt;</span></span>
+<span id="cb20-4"><a href="#cb20-4" aria-hidden="true" tabindex="-1"></a>    <span class="dt">&lt;</span><span class="kw">title</span><span class="dt">&gt;</span>D3: Selezioni<span class="dt">&lt;/</span><span class="kw">title</span><span class="dt">&gt;</span></span>
+<span id="cb20-5"><a href="#cb20-5" aria-hidden="true" tabindex="-1"></a>  <span class="dt">&lt;/</span><span class="kw">head</span><span class="dt">&gt;</span></span>
+<span id="cb20-6"><a href="#cb20-6" aria-hidden="true" tabindex="-1"></a>  <span class="dt">&lt;</span><span class="kw">body</span><span class="dt">&gt;</span></span>
+<span id="cb20-7"><a href="#cb20-7" aria-hidden="true" tabindex="-1"></a>    <span class="dt">&lt;</span><span class="kw">div</span><span class="ot"> class</span><span class="op">=</span><span class="st">&quot;about-me&quot;</span><span class="dt">&gt;</span></span>
+<span id="cb20-8"><a href="#cb20-8" aria-hidden="true" tabindex="-1"></a>      <span class="dt">&lt;</span><span class="kw">p</span><span class="dt">&gt;</span>Ciao benvenuti al Master in comunicazione storica<span class="dt">&lt;/</span><span class="kw">p</span><span class="dt">&gt;</span></span>
+<span id="cb20-9"><a href="#cb20-9" aria-hidden="true" tabindex="-1"></a>      <span class="dt">&lt;</span><span class="kw">ul</span><span class="ot"> id</span><span class="op">=</span><span class="st">&quot;list&quot;</span><span class="dt">&gt;</span></span>
+<span id="cb20-10"><a href="#cb20-10" aria-hidden="true" tabindex="-1"></a>        <span class="dt">&lt;</span><span class="kw">li</span><span class="dt">&gt;</span>Sono dotato di superpoteri<span class="dt">&lt;/</span><span class="kw">li</span><span class="dt">&gt;</span></span>
+<span id="cb20-11"><a href="#cb20-11" aria-hidden="true" tabindex="-1"></a>        <span class="dt">&lt;</span><span class="kw">li</span><span class="dt">&gt;</span>Sto studiando editoria digitale<span class="dt">&lt;/</span><span class="kw">li</span><span class="dt">&gt;</span></span>
+<span id="cb20-12"><a href="#cb20-12" aria-hidden="true" tabindex="-1"></a>        <span class="dt">&lt;</span><span class="kw">li</span><span class="dt">&gt;</span>Adoro D3.js!<span class="dt">&lt;/</span><span class="kw">li</span><span class="dt">&gt;</span></span>
+<span id="cb20-13"><a href="#cb20-13" aria-hidden="true" tabindex="-1"></a>      <span class="dt">&lt;/</span><span class="kw">ul</span><span class="dt">&gt;</span></span>
+<span id="cb20-14"><a href="#cb20-14" aria-hidden="true" tabindex="-1"></a>    <span class="dt">&lt;/</span><span class="kw">div</span><span class="dt">&gt;</span></span>
+<span id="cb20-15"><a href="#cb20-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb20-16"><a href="#cb20-16" aria-hidden="true" tabindex="-1"></a>    <span class="dt">&lt;</span><span class="kw">script</span><span class="ot"> src</span><span class="op">=</span><span class="st">&quot;https://d3js.org/d3.v5.min.js&quot;</span><span class="dt">&gt;&lt;/</span><span class="kw">script</span><span class="dt">&gt;</span></span>
+<span id="cb20-17"><a href="#cb20-17" aria-hidden="true" tabindex="-1"></a>    <span class="dt">&lt;</span><span class="kw">script</span><span class="ot"> src</span><span class="op">=</span><span class="st">&quot;main.js&quot;</span><span class="dt">&gt;&lt;/</span><span class="kw">script</span><span class="dt">&gt;</span></span>
+<span id="cb20-18"><a href="#cb20-18" aria-hidden="true" tabindex="-1"></a>  <span class="dt">&lt;/</span><span class="kw">body</span><span class="dt">&gt;</span></span>
+<span id="cb20-19"><a href="#cb20-19" aria-hidden="true" tabindex="-1"></a><span class="dt">&lt;/</span><span class="kw">html</span><span class="dt">&gt;</span></span></code></pre></div>
+<p>In genere per ottenere una certa interattività si aggiungono degli <a
+href="https://developer.mozilla.org/en-US/docs/Web/API/Event">eventi</a>,
+prima abbiamo visto <code>onload</code>, in questo caso potremmo usare
+<code>onclick</code>. Nel file non è presente nessun evento quindi la
+modifica al DOM avverrà nel momento in cui si carica il file
+<code>main.js</code> che contiene appunto le modifiche.</p>
+<div class="sourceCode" id="cb21"><pre
+class="sourceCode javascript"><code class="sourceCode javascript"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="dv">1</span> <span class="kw">const</span> listItems <span class="op">=</span> [<span class="op">...</span><span class="bu">document</span><span class="op">.</span><span class="fu">getElementsByTagName</span>(<span class="st">&#39;li&#39;</span>)]<span class="op">;</span></span>
+<span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a><span class="dv">2</span> listItems<span class="op">.</span><span class="fu">map</span>(item <span class="kw">=&gt;</span> item<span class="op">.</span><span class="at">style</span><span class="op">.</span><span class="fu">setProperty</span>(<span class="st">&#39;font-weight&#39;</span><span class="op">,</span> <span class="st">&#39;bold&#39;</span>))<span class="op">;</span></span>
+<span id="cb21-3"><a href="#cb21-3" aria-hidden="true" tabindex="-1"></a><span class="kw">const</span> ul <span class="op">=</span> <span class="bu">document</span><span class="op">.</span><span class="fu">getElementsByTagName</span>(<span class="st">&#39;ul&#39;</span>)[<span class="dv">0</span>]<span class="op">;</span></span>
+<span id="cb21-4"><a href="#cb21-4" aria-hidden="true" tabindex="-1"></a><span class="kw">const</span> newItem <span class="op">=</span> <span class="bu">document</span><span class="op">.</span><span class="fu">createElement</span>(<span class="st">&#39;li&#39;</span>)<span class="op">;</span></span>
+<span id="cb21-5"><a href="#cb21-5" aria-hidden="true" tabindex="-1"></a>newItem<span class="op">.</span><span class="fu">appendChild</span>(<span class="bu">document</span><span class="op">.</span><span class="fu">createTextNode</span>(<span class="vs">`Cerco di capire le selezioni in D3.`</span>))<span class="op">;</span></span>
+<span id="cb21-6"><a href="#cb21-6" aria-hidden="true" tabindex="-1"></a>ul<span class="op">.</span><span class="fu">appendChild</span>(newItem)<span class="op">;</span></span></code></pre></div>
+<p>Iniziamo da questo script che non contiene nessun comando D3 ma
+semplice javascript, quello che spesso viene chiamato <em>vanilla
+javascript</em>. La prima riga contiene
+<code>document.getElementsByTagName('li')</code> che recupera tutti i
+<code>li</code>, l’operatore ‘spread’ li passa direttamente come una
+lista alla variabile <code>listItems</code>. Ora tocca alla funzione
+<code>.map</code> che ad ogni elemento della lista a cui viene applicata
+(ora <code>listItems.map()</code>) applica la funzione
+<code>item =&gt; item.style.setProperty('font-weight', 'bold')</code>.
+Comando che trasforma lo stile da normale in grassetto. Lo stesso
+comando poteva essere gestito da CSS ma avremmo avuto comunque il
+problema di “quando” applicare la trasformazione. Ritorniamo al nostro
+esempio. I tag <code>&lt;li&gt;</code> devono essere all’interno di un
+<code>&lt;ul&gt;</code>; recuperiamo quello che vogliamo modificare,
+<code>document.getElementsByTagName('ul')[0]</code>; infine creaiamo un
+nuovo <code>&lt;li&gt;</code>, vi aggiungiamo del testo e lo aggiungiamo
+al tag <code>&lt;ul&gt;</code>. Si tratta di un’operazione di
+<em>routine</em> che richiede però un certo sforzo. Nelle normali
+applicazioni web dove le modifiche, aggiunte, aggiornamenti possono
+essere in numero importante un’operazione di questo genere costituisce
+un problema. Per risolvere simili difficoltà sono stati sviluppati vari
+frameworks (come i già citati ‘Vue’ e ‘React’) che accelerano e
+semplificano questo lavoro. Vediamo come si può procedere usando
+<code>D3</code>, uno strumento specializzato nella visualizzazione dati,
+‘Vue’ e ‘React’ sono generali e possono essere usati per costruire
+integralmente un’applicazione web.</p>
+<div class="sourceCode" id="cb22"><pre
+class="sourceCode javascript"><code class="sourceCode javascript"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a><span class="kw">const</span> li <span class="op">=</span> d3<span class="op">.</span><span class="fu">selectAll</span>(<span class="st">&#39;li&#39;</span>)<span class="op">.</span><span class="fu">style</span>(<span class="st">&#39;font-weight&#39;</span><span class="op">,</span> <span class="st">&#39;bold&#39;</span>)<span class="op">;</span></span>
+<span id="cb22-2"><a href="#cb22-2" aria-hidden="true" tabindex="-1"></a><span class="kw">const</span> ul <span class="op">=</span> d3<span class="op">.</span><span class="fu">select</span>(<span class="st">&#39;ul&#39;</span>)<span class="op">;</span></span>
+<span id="cb22-3"><a href="#cb22-3" aria-hidden="true" tabindex="-1"></a>ul<span class="op">.</span><span class="fu">append</span>(<span class="st">&#39;li&#39;</span>)<span class="op">.</span><span class="fu">text</span>(<span class="vs">`I&#39;m learning about selections`</span>)<span class="op">;</span></span>
+<span id="cb22-4"><a href="#cb22-4" aria-hidden="true" tabindex="-1"></a><span class="kw">const</span> ul <span class="op">=</span> d3<span class="op">.</span><span class="fu">select</span>(<span class="st">&#39;ul&#39;</span>)<span class="op">;</span></span>
+<span id="cb22-5"><a href="#cb22-5" aria-hidden="true" tabindex="-1"></a>ul<span class="op">.</span><span class="fu">select</span>(<span class="st">&#39;li&#39;</span>)<span class="op">.</span><span class="fu">style</span>(<span class="st">&#39;color&#39;</span><span class="op">,</span> <span class="st">&#39;red&#39;</span>)<span class="op">;</span></span>
+<span id="cb22-6"><a href="#cb22-6" aria-hidden="true" tabindex="-1"></a>ul<span class="op">.</span><span class="fu">append</span>(<span class="st">&#39;li&#39;</span>)<span class="op">.</span><span class="fu">text</span>(<span class="vs">`I&#39;m learning about selections`</span>)<span class="op">;</span></span></code></pre></div>
+<p>Le operazioni da fare sono solo <code>select</code> o
+<code>selectAll</code> (nel caso vi siano una sequenza di elementi). La
+selezione in <code>D3</code> individua un elemento, se l’elemento non
+esiste viene creato, posto che vi si inseriscano dati o assegnati altri
+elementi, in questo caso viene aggiunto del testo in grassetto.</p>
+<p><code>d3.select()</code>, seleziona il primo elemento per nome,
+classe, id o per gli altri elementi CSS; <code>d3.selectAll()</code>
+seleziona un array, sempre attraverso iselettori CSS. Fatta la selezione
+gli elementi possono essere modificati, ad esempio:
+<code>d3.selectAll(“circle”).attr(“fill”, “#ff0000”)</code> qui ‘circle’
+è un comando SVG, <code>d3.select(“h1”).text(“Hello World!”)</code>
+<code>d3.select(“svg”).append(“rect”).attr(“x”,50).attr(“y”,100).attr(“width”,100).attr(“height”,100).attr(“fill”,”#0000FF”)</code>
+viene creato un rettangolo, aggiunto a <code>&lt;svg&gt;</code>, nel
+punto di coordinate (50, 100), di base 100 e altezza 1000. Colleghiamo i
+dati agli elementi selezionati con la funzione data()</p>
+<div class="sourceCode" id="cb23"><pre
+class="sourceCode javascript"><code class="sourceCode javascript"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a><span class="kw">var</span> svg <span class="op">=</span> d3<span class="op">.</span><span class="fu">select</span>(<span class="st">&quot;body&quot;</span>)<span class="op">.</span><span class="fu">append</span>(<span class="st">&quot;svg&quot;</span>) <span class="co">// all&#39;elemento &lt;body&gt; aggiungiamo &lt;svg&gt;</span></span>
+<span id="cb23-2"><a href="#cb23-2" aria-hidden="true" tabindex="-1"></a>svg<span class="op">.</span><span class="fu">selectAll</span>()  <span class="co">// generiamo una serie di elementi, per ora indeterminati</span></span>
+<span id="cb23-3"><a href="#cb23-3" aria-hidden="true" tabindex="-1"></a>    <span class="op">.</span><span class="fu">data</span>(data) <span class="co">// li colleghiamo ai dati che abbiamo recuperato precedentemente</span></span>
+<span id="cb23-4"><a href="#cb23-4" aria-hidden="true" tabindex="-1"></a>    <span class="op">.</span><span class="fu">join</span>(<span class="st">&quot;rect&quot;</span>)  <span class="co">// i dati vengono collegati a rettangoli, un dato per ogni rettangolo</span></span>
+<span id="cb23-5"><a href="#cb23-5" aria-hidden="true" tabindex="-1"></a>    <span class="op">.</span><span class="fu">attr</span>(<span class="st">&quot;class&quot;</span><span class="op">,</span> <span class="st">&quot;bar&quot;</span>)</span>
+<span id="cb23-6"><a href="#cb23-6" aria-hidden="true" tabindex="-1"></a>    <span class="op">.</span><span class="fu">style</span>(<span class="st">&quot;fill&quot;</span><span class="op">,</span> <span class="st">&#39;lime&#39;</span>)</span></code></pre></div>
+<p>La caratteristica di <code>.join()</code> è di sincronizzare i dati
+con gli elementi selezionati del DOM. Se vi sono più dati che elementi
+provvede a crearne di nuovi se invece i dati sono in nnumero maggiore
+degli elementi elemina gli elementi di troppo. Ovviamente lo
+sviluppatore può controllare queste operazioni con
+<code>.join().enter()</code>, <code>.join().update()</code> o
+<code>.join().exit()</code>. Si veda <a
+href="https://observablehq.com/@d3/selection-join">Mike Bostock,
+selection.join, 2019</a>. Ricapitoliamo: abbiamo scaricato i dati, siamo
+riusciti a collegarli ciascuno a un rettangolo che costituirà il grafico
+a barre, ora dovremo aggiungere gli elementi grafici generali, vedi il
+file <code>index_2.html</code>:</p>
+<div class="sourceCode" id="cb24"><pre
+class="sourceCode javascript"><code class="sourceCode javascript"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a><span class="co">// stabiliamo le dimensione del grafico e il margine, che è lo spazio tra l&#39;elemento e il bordo della &quot;finestra&quot;</span></span>
+<span id="cb24-2"><a href="#cb24-2" aria-hidden="true" tabindex="-1"></a><span class="kw">var</span> margin <span class="op">=</span> {<span class="dt">top</span><span class="op">:</span> <span class="dv">40</span><span class="op">,</span> <span class="dt">right</span><span class="op">:</span> <span class="dv">20</span><span class="op">,</span> <span class="dt">bottom</span><span class="op">:</span> <span class="dv">70</span><span class="op">,</span> <span class="dt">left</span><span class="op">:</span> <span class="dv">100</span>}<span class="op">;</span></span>
+<span id="cb24-3"><a href="#cb24-3" aria-hidden="true" tabindex="-1"></a>width <span class="op">=</span> <span class="dv">1260</span> <span class="op">-</span> margin<span class="op">.</span><span class="at">left</span> <span class="op">-</span> margin<span class="op">.</span><span class="at">right</span><span class="op">;</span></span>
+<span id="cb24-4"><a href="#cb24-4" aria-hidden="true" tabindex="-1"></a>height <span class="op">=</span> <span class="dv">700</span> <span class="op">-</span> margin<span class="op">.</span><span class="at">top</span> <span class="op">-</span> margin<span class="op">.</span><span class="at">bottom</span><span class="op">;</span></span>
+<span id="cb24-5"><a href="#cb24-5" aria-hidden="true" tabindex="-1"></a><span class="co">// stabiliamo le estensioni dell&#39;asse delle ascisse e delle ordinate, i &quot;ticks&quot; sono quelle piccole linee che aiutano il lettore a seguire l&#39;andamento</span></span>
+<span id="cb24-6"><a href="#cb24-6" aria-hidden="true" tabindex="-1"></a><span class="co">// dell&#39;ordinata</span></span>
+<span id="cb24-7"><a href="#cb24-7" aria-hidden="true" tabindex="-1"></a><span class="kw">var</span> x <span class="op">=</span> d3<span class="op">.</span><span class="fu">scaleBand</span>()<span class="op">.</span><span class="fu">range</span>([<span class="dv">0</span><span class="op">,</span> width])<span class="op">;</span></span>
+<span id="cb24-8"><a href="#cb24-8" aria-hidden="true" tabindex="-1"></a><span class="kw">var</span> y <span class="op">=</span> d3<span class="op">.</span><span class="fu">scaleLinear</span>()<span class="op">.</span><span class="fu">range</span>([height<span class="op">,</span> <span class="dv">0</span>])<span class="op">;</span></span>
+<span id="cb24-9"><a href="#cb24-9" aria-hidden="true" tabindex="-1"></a><span class="kw">var</span> xAxis <span class="op">=</span> d3<span class="op">.</span><span class="fu">axisBottom</span>()<span class="op">.</span><span class="fu">scale</span>(x)<span class="op">;</span></span>
+<span id="cb24-10"><a href="#cb24-10" aria-hidden="true" tabindex="-1"></a><span class="kw">var</span> yAxis <span class="op">=</span> d3<span class="op">.</span><span class="fu">axisLeft</span>()<span class="op">.</span><span class="fu">scale</span>(y)<span class="op">.</span><span class="fu">ticks</span>(<span class="dv">10</span>)<span class="op">;</span></span></code></pre></div>
+<p>Il nostro obiettivo è mettere a confronto i dati covid in Italia con
+quelli in Germania. Scaricheremo allora entrambi gli insiemi di dati,
+costruiremo un grafico, aggiungeremo un evento ‘onclick’ e traformeremo
+il grafico modificando i dati. Per vedere il risultato guardate il file
+<code>index_3.html</code>. Fate attenzione, dopoa ver cliccato sul
+grafico dovrete aspettare qualche secondo perché le prime modificazioni
+riguardano giorni senza pazienti e non sono quindi visibili, ma lo
+script effettua comunuque i calcoli.</p>
+<div class="sourceCode" id="cb25"><pre
+class="sourceCode javascript"><code class="sourceCode javascript"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a>svg<span class="op">.</span><span class="fu">on</span>( <span class="st">&quot;click&quot;</span><span class="op">,</span> <span class="kw">function</span>() {</span>
+<span id="cb25-2"><a href="#cb25-2" aria-hidden="true" tabindex="-1"></a>  [ data<span class="op">,</span> data2 ] <span class="op">=</span> [ data2<span class="op">,</span> data ]<span class="op">;</span></span>
+<span id="cb25-3"><a href="#cb25-3" aria-hidden="true" tabindex="-1"></a>  mycolor <span class="op">=</span> (mycolor <span class="op">==</span> <span class="st">&quot;steelblue&quot;</span>)<span class="op">?</span> <span class="st">&quot;lime&quot;</span> <span class="op">:</span> <span class="st">&quot;steelblue&quot;</span><span class="op">;</span></span>
+<span id="cb25-4"><a href="#cb25-4" aria-hidden="true" tabindex="-1"></a>svg<span class="op">.</span><span class="fu">selectAll</span>(<span class="st">&quot;.bar&quot;</span>)<span class="op">.</span><span class="fu">data</span>(data)</span>
+<span id="cb25-5"><a href="#cb25-5" aria-hidden="true" tabindex="-1"></a>  <span class="op">.</span><span class="fu">transition</span>()<span class="op">.</span><span class="fu">duration</span>( <span class="dv">1000</span> )<span class="op">.</span><span class="fu">delay</span>( (d<span class="op">,</span>i)<span class="kw">=&gt;</span><span class="dv">100</span><span class="op">*</span>i )</span>
+<span id="cb25-6"><a href="#cb25-6" aria-hidden="true" tabindex="-1"></a>  <span class="op">.</span><span class="fu">style</span>(<span class="st">&quot;fill&quot;</span><span class="op">,</span> mycolor)</span>
+<span id="cb25-7"><a href="#cb25-7" aria-hidden="true" tabindex="-1"></a>  <span class="op">.</span><span class="fu">attr</span>(<span class="st">&quot;x&quot;</span><span class="op">,</span> <span class="kw">function</span>(d) { <span class="cf">return</span> <span class="fu">x</span>(d<span class="op">.</span><span class="at">date</span>)<span class="op">;</span> })</span>
+<span id="cb25-8"><a href="#cb25-8" aria-hidden="true" tabindex="-1"></a>  <span class="op">.</span><span class="fu">attr</span>(<span class="st">&quot;width&quot;</span><span class="op">,</span> <span class="dv">10</span>) </span>
+<span id="cb25-9"><a href="#cb25-9" aria-hidden="true" tabindex="-1"></a>  <span class="op">.</span><span class="fu">attr</span>(<span class="st">&quot;y&quot;</span><span class="op">,</span> <span class="kw">function</span>(d) { <span class="cf">return</span> <span class="fu">y</span>(d[<span class="st">&quot;Cumulative Confirmed&quot;</span>])<span class="op">;</span> }) </span>
+<span id="cb25-10"><a href="#cb25-10" aria-hidden="true" tabindex="-1"></a>  <span class="op">.</span><span class="fu">attr</span>(<span class="st">&quot;height&quot;</span><span class="op">,</span> <span class="kw">function</span>(d) { <span class="cf">return</span> height <span class="op">-</span> <span class="fu">y</span>(d[<span class="st">&quot;Cumulative Confirmed&quot;</span>])<span class="op">;</span> })<span class="op">;</span></span>
+<span id="cb25-11"><a href="#cb25-11" aria-hidden="true" tabindex="-1"></a>  })<span class="op">;</span></span></code></pre></div>
+<p>Una volta cliccato sul grafico, la funzione “callback”, detta così
+proprio perché viene eseguita come risposta, sostituisce i dati
+dell’Italia con quelli della Germania (1) e ne modifica il colore,
+vengono poi selezionati i rettangoli a cui vengono passati i nuovi dati,
+effettuata una transizione con un certo ritardo, ogni rettangolo si
+modifica 0.1 secondi dopo il precedente, un intervallo sufficiente a
+dare un’impressione di “morbido” cambiamento.</p>
+<h4 id="epub-e-interattività">ePub e interattività</h4>
+<p>Questi tipi di rappresentazioni grafiche, sia fatte con
+<code>canvas</code> che con <code>D3</code> possono essere usate
+all’interno di un ePub 3.0. I file html con javascript possono essere
+inseriti all’interno di un <code>iframe</code> così da lasciare
+inalterate le altre parti dell’ePub, sia nel caso il lettore non
+contmpli l’uso di kavascript, sia nel caso vi sia un uso improprio dello
+script. La possibilità che i programmi in javascript possano accedere
+all’esterno del browser in cui vengono utilizzati è rigidamente
+controllato, anche in questo caso l’obbligo di limitarsi a un
+<code>iframe</code> ha la stessa funzione. Per un esempio leggi <a
+href="https://www.w3.org/publishing/epub32/epub-contentdocs.html#example-4">EPUB
+Content Documents 3.2, 2019</a></p>
+<h3 id="conservare-i-dati-da-fare">Conservare i dati (DA FARE)</h3>
+<p>Fino ad ora abbiamo sempre parlato di programmi eseguibili in una
+console o in un browser, programmi che producono dati che spariscono
+definitivamente una volta che la finestra del browser o la console
+vengono chiusi. Se usate node potete accedere al file system del vostro
+computer e salvare i dati in un file. Da un browser vedi <a
+href="https://developer.mozilla.org/en-US/docs/Learn/JavaScript/Client-side_web_APIs/Client-side_storage">Mozilla</a>
+Altrimenti sui un server <a
+href="https://developer.mozilla.org/en-US/docs/Learn/Server-side/First_steps">Mozilla</a></p>
+<h2 id="tecnologie-xml">4. Tecnologie XML</h2>
+<p>Per poter trasmettere, comunicare un testo, potete provare
+visualizzando in un browser</p>
+<div class="sourceCode" id="cb26"><pre
+class="sourceCode html"><code class="sourceCode html"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a><span class="dt">&lt;!DOCTYPE</span> html<span class="dt">&gt;</span></span>
+<span id="cb26-2"><a href="#cb26-2" aria-hidden="true" tabindex="-1"></a><span class="dt">&lt;</span><span class="kw">html</span><span class="dt">&gt;</span></span>
+<span id="cb26-3"><a href="#cb26-3" aria-hidden="true" tabindex="-1"></a><span class="dt">&lt;</span><span class="kw">head</span><span class="dt">&gt;</span></span>
+<span id="cb26-4"><a href="#cb26-4" aria-hidden="true" tabindex="-1"></a>  <span class="dt">&lt;</span><span class="kw">meta</span><span class="ot"> charset</span><span class="op">=</span><span class="st">&quot;utf-8&quot;</span><span class="dt">&gt;</span></span>
+<span id="cb26-5"><a href="#cb26-5" aria-hidden="true" tabindex="-1"></a><span class="dt">&lt;/</span><span class="kw">head</span><span class="dt">&gt;</span></span>
+<span id="cb26-6"><a href="#cb26-6" aria-hidden="true" tabindex="-1"></a><span class="co">&lt;!-- Quello che segue è un titolo, h1, con un semplice testo --&gt;</span></span>
+<span id="cb26-7"><a href="#cb26-7" aria-hidden="true" tabindex="-1"></a><span class="dt">&lt;</span><span class="kw">body</span><span class="dt">&gt;</span></span>
+<span id="cb26-8"><a href="#cb26-8" aria-hidden="true" tabindex="-1"></a><span class="dt">&lt;</span><span class="kw">h1</span><span class="dt">&gt;</span>Hello world!<span class="dt">&lt;/</span><span class="kw">h1</span><span class="dt">&gt;</span></span>
+<span id="cb26-9"><a href="#cb26-9" aria-hidden="true" tabindex="-1"></a><span class="dt">&lt;/</span><span class="kw">body</span><span class="dt">&gt;</span></span>
+<span id="cb26-10"><a href="#cb26-10" aria-hidden="true" tabindex="-1"></a><span class="dt">&lt;/</span><span class="kw">html</span><span class="dt">&gt;</span></span></code></pre></div>
+<p>ma non è una soluzione particolarmente comoda: la dimensione dello
+schermo su cui guardiamo, il tipo di browser e altre caratteristiche che
+vedremo nelle pagine che seguono, non fanno di questo file uno strumento
+adeguato al nostro obiettivo: che è inviare un messaggio che conservi le
+dimensioni fisse che siamo abituati ad avere sulla carta, distanze e
+rapporti con le immagini e i bordi. Proviamo ora con un file PDF
+generato direttamente dalla nostra pagina, facendo uso di una library
+javascript <a href="https://github.com/MrRio/jsPDF">jsPDF</a> che non
+abbiamo sul nostro computer ma che scarichiamo “al volo” dal web (si
+veda il file <code>pdf.html</code>):</p>
+<div class="sourceCode" id="cb27"><pre
+class="sourceCode html"><code class="sourceCode html"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a><span class="dt">&lt;!DOCTYPE</span> html<span class="dt">&gt;</span></span>
+<span id="cb27-2"><a href="#cb27-2" aria-hidden="true" tabindex="-1"></a><span class="dt">&lt;</span><span class="kw">html</span><span class="dt">&gt;</span></span>
+<span id="cb27-3"><a href="#cb27-3" aria-hidden="true" tabindex="-1"></a><span class="dt">&lt;</span><span class="kw">head</span><span class="dt">&gt;</span></span>
+<span id="cb27-4"><a href="#cb27-4" aria-hidden="true" tabindex="-1"></a>  <span class="dt">&lt;</span><span class="kw">meta</span><span class="ot"> charset</span><span class="op">=</span><span class="st">&quot;utf-8&quot;</span><span class="dt">&gt;</span></span>
+<span id="cb27-5"><a href="#cb27-5" aria-hidden="true" tabindex="-1"></a>  <span class="dt">&lt;</span><span class="kw">script</span><span class="ot"> src</span><span class="op">=</span><span class="st">&quot;https://cdnjs.cloudflare.com/ajax/libs/jspdf/1.5.3/jspdf.debug.js&quot;</span><span class="dt">&gt;&lt;/</span><span class="kw">script</span><span class="dt">&gt;</span></span>
+<span id="cb27-6"><a href="#cb27-6" aria-hidden="true" tabindex="-1"></a><span class="dt">&lt;/</span><span class="kw">head</span><span class="dt">&gt;</span></span>
+<span id="cb27-7"><a href="#cb27-7" aria-hidden="true" tabindex="-1"></a><span class="dt">&lt;</span><span class="kw">script</span><span class="dt">&gt;</span> </span>
+<span id="cb27-8"><a href="#cb27-8" aria-hidden="true" tabindex="-1"></a><span class="co">// La dimensione pagina di default è l&#39;a4, portrait</span></span>
+<span id="cb27-9"><a href="#cb27-9" aria-hidden="true" tabindex="-1"></a> <span class="kw">var</span> doc <span class="op">=</span> <span class="kw">new</span> <span class="fu">jsPDF</span>()</span>
+<span id="cb27-10"><a href="#cb27-10" aria-hidden="true" tabindex="-1"></a>doc<span class="op">.</span><span class="fu">text</span>(<span class="st">&quot;Hello world!&quot;</span><span class="op">,</span> <span class="dv">100</span><span class="op">,</span> <span class="dv">40</span><span class="op">,</span> angle<span class="op">=</span><span class="dv">5</span>) <span class="co">// i numeri sono le coordiante sulla pagina in pixel dell&#39;angolo in alto a sinistra, l&#39;angolo è in gradi, in senso antiorario</span></span>
+<span id="cb27-11"><a href="#cb27-11" aria-hidden="true" tabindex="-1"></a> img<span class="op">.</span><span class="at">src</span> <span class="op">=</span> <span class="st">&#39;world_local.png&#39;</span><span class="op">;</span></span>
+<span id="cb27-12"><a href="#cb27-12" aria-hidden="true" tabindex="-1"></a>doc<span class="op">.</span><span class="fu">addImage</span>(img<span class="op">,</span> <span class="st">&#39;png&#39;</span><span class="op">,</span> <span class="dv">10</span><span class="op">,</span> <span class="dv">50</span><span class="op">,</span> <span class="dv">30</span><span class="op">,</span> <span class="dv">20</span>)<span class="op">;</span></span>
+<span id="cb27-13"><a href="#cb27-13" aria-hidden="true" tabindex="-1"></a>doc<span class="op">.</span><span class="fu">save</span>(<span class="st">&quot;a4.pdf&quot;</span>)</span>
+<span id="cb27-14"><a href="#cb27-14" aria-hidden="true" tabindex="-1"></a><span class="dt">&lt;/</span><span class="kw">script</span><span class="dt">&gt;</span></span>
+<span id="cb27-15"><a href="#cb27-15" aria-hidden="true" tabindex="-1"></a><span class="dt">&lt;/</span><span class="kw">html</span><span class="dt">&gt;</span></span></code></pre></div>
+<p>Potete controllare facilmente i comandi chiave nella <a
+href="http://raw.githack.com/MrRio/jsPDF/master/docs/">documentazione</a>
+di jsPDF. La cosa interessante è tutta in
+<code>doc.text("Hello world!", 100, 40, angle=5)</code>. L’oggetto
+<code>doc</code> riceve le coordinate dove apparire sulla pagina, e un
+orientamento in gradi. La riga successiva presenta l’indirizzo del file
+da caricare. Torneremo varie volte su questa caratteristica di
+Javascript ma per ragioni di sicurezza, questo linguaggio, quando è
+all’interno di un browser, non può accedere al sistema operativo. È
+necessario allora che i file di questa cartella siano gestiti da un
+server web così che il browser possa accedere ad essi con un’usuale
+connessione http. Chi conosce nodejs può lanciare, da dentro la cartella
+in cui si trova <code>pdf.html</code></p>
+<div class="sourceCode" id="cb28"><pre
+class="sourceCode bash"><code class="sourceCode bash"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a><span class="ex">npm</span> install <span class="at">-g</span> http-server</span>
+<span id="cb28-2"><a href="#cb28-2" aria-hidden="true" tabindex="-1"></a><span class="ex">http-server</span> <span class="at">-p</span> 8080 <span class="at">--cors</span></span></code></pre></div>
+<p>oppure con python <code>python -m http.server 8080</code>. Il file
+andrà quindi visualizzato all’indirizzo
+<code>localhost:8080/pdf.html</code> Con il comando
+<code>doc.addImage(img, 'png', 10, 50);</code> viene aggiunta l’immagine
+nella posizione indicata dalle coordinate. Infine <code>save</code>
+inizia il download del file, controllato dal browser. Il file PDF
+consiste in una serie di pagine che riportano ciascuna tutte le
+informazioni necessarie a riprodurre il testo, le immagini, i fonts, le
+distanze relative, i metadati, ma anche la progressione lineare delle
+pagine, così che un “reader” in grado di decodificare queste
+informazioni può ricostruire il documento, così come fosse stampato da
+una “stampante virtuale”.</p>
+<p>L’esempio di PDF prodotto con la library <code>jsPDF</code> è adatto
+alla produzione di un file all’interno di un’applicazione, ad esempio la
+fattura di acquisto in un sito di ecommerce, il report delle statistiche
+di vendita di un gestionale aziendale o anche il testo di un blog in un
+formato facilmente conservabile e leggibile <em>offline</em>. Nella
+produzione editoriale il più delle volte si parte da un file di testo
+consegnato da un autore e non da un file html, ma il nostro esempio ci
+dà comunque un’idea della procedura necessaria per arrivare a un output
+in PDF. Gli strumenti più diffusi sono</p>
+<ul>
+<li>i software di impaginazione, i più noti (commerciali) sono <a
+href="https://www.adobe.com/products/indesign.html?promoid=KLYUU&amp;s_cid=70114000002CfGJAA0&amp;s_iid=70114000002ChdJAAS">Adobe
+InDesign</a> e <a
+href="http://www.quark.com/Products/QuarkXPress/">Quark Xpress</a>, che
+sono pensati per essere usati da un grafico che riceve i testi
+dall’autore;</li>
+<li>Latex (e relative varianti), open source, destinato agli autori, ma
+anche ai grafici/programmatori che rielaborano il testo di altri. In
+assoluto il migliore in ambito scientifico o quando l’impaginazione è
+complessa, come nelle edizioni critiche di testi letterari; per
+approfondire questo fondamentale strumento per la produzione personale
+dei vostri scritti potete consultare i tutorial presenti su <a
+href="https://www.overleaf.com/learn/latex/Free_online_introduction_to_LaTeX_(part_1)">Overleaf</a>,
+un interessante editor online. In alternativa si può leggere utilmente
+<a href="https://en.wikibooks.org/wiki/LaTeX">LATEX</a>. Esiste anche
+una comunità importante di sviluppatori italiani <a
+href="https://www.guitex.org/home/">GuIT</a>.</li>
+<li>infine bisogna ricordare tutte le diverse tecnologie legate alla
+manipolazione automatica dei diversi linguaggi di markup. Partendo da un
+file XML, esistono soluzioni per trasformare in XML testo proveniente
+persino da Microsoft Word, ad esempio lo splendido <a
+href="https://pandoc.org/">pandoc</a> e in genere gli editor XML come <a
+href="https://www.oxygenxml.com/">Oxygenxml</a> hanno funzionalità con
+questo scopo, il testo può essere formattato in PDF attraverso fogli di
+stile XSL-FO, e recentemente anche CSS. Esistono anche prodotti
+commerciali <a href="http://www.antennahouse.com/">Antenna House</a>, <a
+href="http://www.princexml.com/">Prince</a> destinati all’uso
+industriale.</li>
+</ul>
+<h3 id="xml-e-linguaggi-di-markup">XML e linguaggi di markup</h3>
+<p>Tra le varie modalità di preparazione di un file PDF accenneremo solo
+al linguaggio XSLT, e alla sua variante XSL-FO. Non parleremo invece né
+di Latex, che vi invito a studiare partendo dalla bibliografia indicata
+(ne vale la pena), né tantomeno dei software commerciali di
+impaginazione. Va detto a questo punto che il processo di produzione
+nelle aziende editoriali è in larga parte monopolizzato da InDesign e
+QuarkXpress, con una piccola parte di lavori gestiti in XML (attraverso
+<a
+href="https://www.adobe.com/products/framemaker.html">Framemaker</a>).
+Noi accenneremo solo alla produzione di PDF mediante strumenti
+“programmatici”. L’esempio più semplice di linguaggio di markup è
+l’HTML. Un linguaggio, discendente in un qualche modo dall’XML, che
+raccoglie al proprio interno sia tag sintattici
+(<code>&lt;div&gt;</code> o <code>&lt;span&gt;</code>) sia tag semantici
+(<code>table</code>, <code>h1</code>, <code>&lt;header&gt;</code>,
+<code>&lt;footer&gt;</code>, ecc.). I browser sono in grado di
+correggere molti errori della sintassi HTML. Anche se ci siamo
+dimenticati di chiudere un tag la nostra pagina verrà comunque
+visualizzata, sempre che il browser riesca a indovinare cosa abbiamo
+dimenticato, ma succede spesso. Nella trasmissione di dati, di file, in
+generale di contenuti all’interno di un’applicazione dobbiamo ricorrere
+a una sintassi e a una semantica più rigorose. I file non sono scritti
+“a mano” ma sono il risultato di una funzione e se manca un tag di
+chiusura o è un errore, e va segnalato, o è una scelta deliberata. L’XML
+è il linguaggio (una collezione di norme con annesso un vocabolario, che
+a volte viene chiamata <em>ontologia</em>) utilizzato nella trasmissione
+dei contenuti. Parleremo anche del suo principale concorrente, <a
+href="https://www.json.org/json-en.html">JSON</a> un formato pensato per
+lo scambio di dati, nei capitoli successivi. Va detto che nelle
+applicazioni editoriali (e altre nel mondo dell’industria) l’XML
+mantiene ancora un ruolo importante, è più complesso da produrre e
+manipolare rispetto a un JSON, ma il parsing (ovvero la lettura) di un
+XML è viceversa più semplice, e tanto più semplice quanto i dati
+diventano più complicati.</p>
+<h3 id="prepariamo-un-file-xml">Prepariamo un file XML</h3>
+<p>Prendiamo ad esempio il file <code>Bookstore-DTD.xml</code> che
+trovate nella pagina di github collegata a questo saggio. (Parte del
+materiale qui utilizzato proviene da <a
+href="https://cs.stanford.edu/people/widom/DB-mooc.html">Stanford’s
+Databases MOOC, Jennifer Widom, 2012</a> che oggi, giugno 2020, non mi
+risulta pubblicamente disponibile) I tag sono organizzati in maniera
+gerarchica in questo modo: <code>&lt;Bookstore&gt;</code> è l’elemento
+radice che può contenere un numero imprecisato di
+<code>&lt;Book&gt;</code> o di <code>&lt;Magazine&gt;</code>. A sua
+volta <code>&lt;Book&gt;</code> (ma anche <code>&lt;Magazine&gt;</code>)
+conterrà un <code>&lt;Title&gt;</code>, uno o più
+<code>&lt;Author&gt;</code>, ecc. Un elemento come
+<code>&lt;Book ISBN="ISBN-0-13-713526-2" Price="85" Edition="3rd"&gt;</code>
+contiene anche degli attributi (stringhe di nome/valore separate da
+spazi). La sintassi esatta degli elementi è contenuta nella parte
+iniziale del file, in quella che si chiama DTD. Spesso si usa separare
+le definizioni del vocabolario di tag in un file di tipo
+<code>xsd</code> (schema XML). In linea di principio ognuno potrebbe
+costruirsi il proprio vocabolario per ciascun argomento di cui intende
+occuparsi. Per fortuna si sono consolidati alcuni vocabolari specifici,
+ad esempio DocBook (per l’editoria in generale) <a
+href="https://github.com/docbook/wiki/wiki">DocBook</a>, <a
+href="http://www.sagehill.net/docbookxsl/">DocBook XSL – The Complete
+Guide</a> e <a href="https://tei-c.org/">TEI</a> per le discipline
+umanistiche in particolare. Vediamo ora qualche caso concreto (nella
+pratica quotidiana raramente si lavora direttamente sui file come faremo
+ora noi, per ragioni didattiche. Vengono usati sempre editor come quelli
+che trovate in <a
+href="https://help.ubuntu.com/community/DocBookEditors">questa
+pagina</a>). Per poter lavorare con i file XML utilizzeremo
+<code>xsltproc</code> un programma che legge file XSLT, file che
+contengono una serie di trasformazioni che vogliamo applicare al file
+XML di input, regole che generano un file di testo di output, che potrà
+essere a sua volta XML, HTML, csv o semplice txt. Tutti questi file non
+sono altro che file di testo dotati di sintassi diverse così che a loro
+volta potranno essere usati per ulteriori lavorazioni. Vedremo qualche
+esempio di XSLT, uno strumento in grado di modificare profondametne la
+struttura del testo a cui viene applicato. Installeremo poi
+<code>docbook-xls</code>, una serie di file XSLT che gestisono le
+trasformazioni secondo il vocabolario docbook. Potremo modificare
+titoli, sottotitoli, sezioni ecc. utilizzando questo standard, diffuso
+in molte produzioni editoriali già da molti anni. Infine installeremo
+<code>apache fop</code>, che ci consentirà di produrre file pdf dai file
+in docbook. Vedremo anche qualche esempio con pandoc. Tutte le
+installazioni che vedremo in questo saggio hanno come riferimento il
+sistema operativo linux, in particolare ubuntu/debian. Chi dispone di
+Mac o Windows troverà facilmente nella bibliografia le indicazioni
+adatte al proprio caso. L’installazione in ubuntu/debian è la
+seguente</p>
+<div class="sourceCode" id="cb29"><pre
+class="sourceCode bash"><code class="sourceCode bash"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> apt update</span>
+<span id="cb29-2"><a href="#cb29-2" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> apt install docbook-xsl</span>
+<span id="cb29-3"><a href="#cb29-3" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> apt install xsltproc</span>
+<span id="cb29-4"><a href="#cb29-4" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> apt install fop</span>
+<span id="cb29-5"><a href="#cb29-5" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> apt docbook-xsl-doc-pdf</span></code></pre></div>
+<p><em>DA FARE</em> Provare con Saxon-JS al posto di xsltproc.</p>
+<p>I file e i comandi che seguono richiedono solo queste installazioni
+di default, se volete utilizzare Apache fop più aggiornato potete
+leggere <a
+href="http://www.linuxfromscratch.org/blfs/view/svn/pst/fop.html">fop-2.5</a>.
+Ritorniamo a <code>Bookstore-DTD.xml</code></p>
+<div class="sourceCode" id="cb30"><pre
+class="sourceCode xml"><code class="sourceCode xml"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a>&lt;<span class="kw">Bookstore</span>&gt;</span>
+<span id="cb30-2"><a href="#cb30-2" aria-hidden="true" tabindex="-1"></a>   &lt;<span class="kw">Book</span><span class="ot"> ISBN=</span><span class="st">&quot;ISBN-0-13-713526-2&quot;</span><span class="ot"> Price=</span><span class="st">&quot;85&quot;</span><span class="ot"> Edition=</span><span class="st">&quot;3rd&quot;</span>&gt;</span>
+<span id="cb30-3"><a href="#cb30-3" aria-hidden="true" tabindex="-1"></a>      &lt;<span class="kw">Title</span>&gt;A First Course in Database Systems&lt;/<span class="kw">Title</span>&gt;</span>
+<span id="cb30-4"><a href="#cb30-4" aria-hidden="true" tabindex="-1"></a>      &lt;<span class="kw">Authors</span>&gt;</span>
+<span id="cb30-5"><a href="#cb30-5" aria-hidden="true" tabindex="-1"></a>         &lt;<span class="kw">Author</span>&gt;</span>
+<span id="cb30-6"><a href="#cb30-6" aria-hidden="true" tabindex="-1"></a>            &lt;<span class="kw">First_Name</span>&gt;Jeffrey&lt;/<span class="kw">First_Name</span>&gt;</span>
+<span id="cb30-7"><a href="#cb30-7" aria-hidden="true" tabindex="-1"></a>            &lt;<span class="kw">Last_Name</span>&gt;Ullman&lt;/<span class="kw">Last_Name</span>&gt;</span>
+<span id="cb30-8"><a href="#cb30-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb30-9"><a href="#cb30-9" aria-hidden="true" tabindex="-1"></a>         &lt;/<span class="kw">Author</span>&gt;</span>
+<span id="cb30-10"><a href="#cb30-10" aria-hidden="true" tabindex="-1"></a>         &lt;<span class="kw">Author</span>&gt;</span>
+<span id="cb30-11"><a href="#cb30-11" aria-hidden="true" tabindex="-1"></a>            &lt;<span class="kw">First_Name</span>&gt;Jennifer&lt;/<span class="kw">First_Name</span>&gt;</span>
+<span id="cb30-12"><a href="#cb30-12" aria-hidden="true" tabindex="-1"></a>            &lt;<span class="kw">Last_Name</span>&gt;Widom&lt;/<span class="kw">Last_Name</span>&gt;</span>
+<span id="cb30-13"><a href="#cb30-13" aria-hidden="true" tabindex="-1"></a>         &lt;/<span class="kw">Author</span>&gt;</span>
+<span id="cb30-14"><a href="#cb30-14" aria-hidden="true" tabindex="-1"></a>      &lt;/<span class="kw">Authors</span>&gt;</span>
+<span id="cb30-15"><a href="#cb30-15" aria-hidden="true" tabindex="-1"></a>      &lt;<span class="kw">Remark</span>&gt;&lt;/<span class="kw">Remark</span>&gt;</span>
+<span id="cb30-16"><a href="#cb30-16" aria-hidden="true" tabindex="-1"></a>   &lt;/<span class="kw">Book</span>&gt;</span>
+<span id="cb30-17"><a href="#cb30-17" aria-hidden="true" tabindex="-1"></a>   &lt;<span class="kw">Book</span><span class="ot"> ISBN=</span><span class="st">&quot;ISBN-0-13-815504-6&quot;</span><span class="ot"> Price=</span><span class="st">&quot;100&quot;</span><span class="ot"> Edition=</span><span class="st">&quot;&quot;</span>&gt;</span>
+<span id="cb30-18"><a href="#cb30-18" aria-hidden="true" tabindex="-1"></a>      &lt;<span class="kw">Title</span>&gt;Database Systems: The Complete Book&lt;/<span class="kw">Title</span>&gt;</span>
+<span id="cb30-19"><a href="#cb30-19" aria-hidden="true" tabindex="-1"></a>      &lt;<span class="kw">Authors</span>&gt;</span>
+<span id="cb30-20"><a href="#cb30-20" aria-hidden="true" tabindex="-1"></a>         &lt;<span class="kw">Author</span>&gt;</span>
+<span id="cb30-21"><a href="#cb30-21" aria-hidden="true" tabindex="-1"></a>            &lt;<span class="kw">First_Name</span>&gt;Hector&lt;/<span class="kw">First_Name</span>&gt;</span>
+<span id="cb30-22"><a href="#cb30-22" aria-hidden="true" tabindex="-1"></a>            &lt;<span class="kw">Last_Name</span>&gt;Garcia-Molina&lt;/<span class="kw">Last_Name</span>&gt;</span>
+<span id="cb30-23"><a href="#cb30-23" aria-hidden="true" tabindex="-1"></a>         &lt;/<span class="kw">Author</span>&gt;</span>
+<span id="cb30-24"><a href="#cb30-24" aria-hidden="true" tabindex="-1"></a>         &lt;<span class="kw">Author</span>&gt;</span>
+<span id="cb30-25"><a href="#cb30-25" aria-hidden="true" tabindex="-1"></a>            &lt;<span class="kw">First_Name</span>&gt;Jeffrey&lt;/<span class="kw">First_Name</span>&gt;</span>
+<span id="cb30-26"><a href="#cb30-26" aria-hidden="true" tabindex="-1"></a>            &lt;<span class="kw">Last_Name</span>&gt;Ullman&lt;/<span class="kw">Last_Name</span>&gt;</span>
+<span id="cb30-27"><a href="#cb30-27" aria-hidden="true" tabindex="-1"></a>         &lt;/<span class="kw">Author</span>&gt;</span>
+<span id="cb30-28"><a href="#cb30-28" aria-hidden="true" tabindex="-1"></a>         &lt;<span class="kw">Author</span>&gt;</span>
+<span id="cb30-29"><a href="#cb30-29" aria-hidden="true" tabindex="-1"></a>            &lt;<span class="kw">First_Name</span>&gt;Jennifer&lt;/<span class="kw">First_Name</span>&gt;</span>
+<span id="cb30-30"><a href="#cb30-30" aria-hidden="true" tabindex="-1"></a>            &lt;<span class="kw">Last_Name</span>&gt;Widom&lt;/<span class="kw">Last_Name</span>&gt;</span>
+<span id="cb30-31"><a href="#cb30-31" aria-hidden="true" tabindex="-1"></a>         &lt;/<span class="kw">Author</span>&gt;</span>
+<span id="cb30-32"><a href="#cb30-32" aria-hidden="true" tabindex="-1"></a>      &lt;/<span class="kw">Authors</span>&gt;</span>
+<span id="cb30-33"><a href="#cb30-33" aria-hidden="true" tabindex="-1"></a>      &lt;<span class="kw">Remark</span>&gt;</span>
+<span id="cb30-34"><a href="#cb30-34" aria-hidden="true" tabindex="-1"></a>         Buy this book bundled with &lt;<span class="kw">BookRef</span><span class="ot"> book=</span><span class="st">&quot;ISBN-0-13-713526-2&quot;</span>/&gt;a great deal!</span>
+<span id="cb30-35"><a href="#cb30-35" aria-hidden="true" tabindex="-1"></a>      &lt;/<span class="kw">Remark</span>&gt;</span>
+<span id="cb30-36"><a href="#cb30-36" aria-hidden="true" tabindex="-1"></a>   &lt;/<span class="kw">Book</span>&gt;</span>
+<span id="cb30-37"><a href="#cb30-37" aria-hidden="true" tabindex="-1"></a>&lt;/<span class="kw">Bookstore</span>&gt;</span></code></pre></div>
+<p>Direi che i tag sono autoesplicativi. Se il file fosse fatto di
+alcune migliaia di righe dovreste ricorrere o alle istruzioni di chi ha
+preparato il file, allo schema del file, DTD o XSD, o come più
+comunemente succede, studiare lo schema per tentativi. Gli editor
+commerciali com Oxygenxml fanno l’analisi in maniera automatica al
+vostro posto. Lo studio dovrà essere fatto mediante comandi XPath di cui
+abbiamo parlato nella precedente sezione. Per ora accontentiamoci di un
+<code>&lt;Bookstore&gt;</code> con alcuni <code>&lt;book&gt;</code>
+dotati di <code>&lt;Title&gt;</code> e di <code>&lt;Authors&gt;</code>.
+A volte potrebbero esserci dei <code>&lt;Remark/&gt;</code>, ma nel
+nostro caso l’elemento è vuoto. Per manipolare questo file possiamo
+usare una trasformazione XSLT. In generale si indica con XSL una
+famiglia di standards per la trasformazione e presentazione di file XML
+che consiste di tre parti:</p>
+<ol type="1">
+<li>XSL Transformations (XSLT), un linguaggio per la trasformazione
+dell’XML, di cui subito vedremo qualche esempio.</li>
+<li>XPath, che consente di “attraversare” i file XML, individuando
+singoli elementi o parti di XML. L’XPath viene usato non solo
+all’interno di XSLT, ma anche in altri linguaggi di programmazione vista
+l’efficienza della ricerca.</li>
+<li>XSL Formatting Objects (XSL-FO), un vocabolario XML per la
+fomattazione dei file, di fatto utilizzato per la produzione di PDF. Per
+la preparazione di file HTML o altri formati testo basta utilizzare
+XSLT. Per ottenere un PDF invece è necessario prima applicare una
+trasformazione con XSL-FO e poi da questo, con un altro processore
+arrivare al file PDF.</li>
+</ol>
+<div class="sourceCode" id="cb31"><pre
+class="sourceCode xslt"><code class="sourceCode xslt"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a><span class="kw">&lt;</span><span class="bu">xsl:stylesheet</span><span class="ot"> version=</span><span class="st">&quot;1.0&quot;</span><span class="ot"> xmlns:xsl=</span><span class="st">&quot;http://www.w3.org/1999/XSL/Transform&quot;</span><span class="kw">&gt;</span></span>
+<span id="cb31-2"><a href="#cb31-2" aria-hidden="true" tabindex="-1"></a><span class="kw">&lt;</span><span class="bu">xsl:output</span><span class="ot"> method=</span><span class="st">&quot;xml&quot;</span><span class="ot"> indent=</span><span class="st">&quot;yes&quot;</span><span class="ot"> omit-xml-declaration=</span><span class="st">&quot;yes&quot;</span><span class="ot"> </span><span class="kw">/&gt;</span></span>
+<span id="cb31-3"><a href="#cb31-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb31-4"><a href="#cb31-4" aria-hidden="true" tabindex="-1"></a><span class="kw">&lt;</span><span class="bu">xsl:template</span><span class="ot"> match=</span><span class="va">&quot;Book&quot;</span><span class="kw">&gt;</span></span>
+<span id="cb31-5"><a href="#cb31-5" aria-hidden="true" tabindex="-1"></a>  <span class="kw">&lt;BookTitle&gt;</span> <span class="kw">&lt;</span><span class="bu">xsl:value-of</span><span class="ot"> select=</span><span class="va">&quot;Title&quot;</span><span class="ot"> </span><span class="kw">/&gt;</span> <span class="kw">&lt;/BookTitle&gt;</span></span>
+<span id="cb31-6"><a href="#cb31-6" aria-hidden="true" tabindex="-1"></a><span class="kw">&lt;/</span><span class="bu">xsl:template</span><span class="kw">&gt;</span></span>
+<span id="cb31-7"><a href="#cb31-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb31-8"><a href="#cb31-8" aria-hidden="true" tabindex="-1"></a><span class="kw">&lt;</span><span class="bu">xsl:template</span><span class="ot"> match=</span><span class="va">&quot;Magazine&quot;</span><span class="kw">&gt;</span></span>
+<span id="cb31-9"><a href="#cb31-9" aria-hidden="true" tabindex="-1"></a>  <span class="kw">&lt;MagazineTitle&gt;</span> <span class="kw">&lt;</span><span class="bu">xsl:value-of</span><span class="ot"> select=</span><span class="va">&quot;Title&quot;</span><span class="ot"> </span><span class="kw">/&gt;</span> <span class="kw">&lt;/MagazineTitle&gt;</span></span>
+<span id="cb31-10"><a href="#cb31-10" aria-hidden="true" tabindex="-1"></a><span class="kw">&lt;/</span><span class="bu">xsl:template</span><span class="kw">&gt;</span></span>
+<span id="cb31-11"><a href="#cb31-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb31-12"><a href="#cb31-12" aria-hidden="true" tabindex="-1"></a><span class="kw">&lt;/</span><span class="bu">xsl:stylesheet</span><span class="kw">&gt;</span></span></code></pre></div>
+<p>La prima riga specifica la versione del foglio di stile XSLT, Docbook
+usa la versione 1.0, ma il W3C ha pubblicato la <a
+href="https://www.w3.org/TR/2017/REC-xslt-30-20170608/">3.0</a>: le
+successive versioni contengono ad esempio la ricerca con espressioni
+regolari, un uso più sofisticato di variabili, ma per gli scopi che
+Docbook si pone la 1.0 è sufficiente (una versione 2.0 è da tempo in
+lavorazione ma non copre ancora tutti gli aspetti di DocBook). La
+seconda riga specifica il tipo di output, in questo caso “xml”, ma
+poteva essere anche html o text.</p>
+<div class="sourceCode" id="cb32"><pre
+class="sourceCode bash"><code class="sourceCode bash"><span id="cb32-1"><a href="#cb32-1" aria-hidden="true" tabindex="-1"></a><span class="ex">xsltproc</span> <span class="at">-o</span> output.xml bookstore_1.xsl Bookstore-DTD.xml</span></code></pre></div>
+<p>il risultato è il seguente:</p>
+<div class="sourceCode" id="cb33"><pre
+class="sourceCode xml"><code class="sourceCode xml"><span id="cb33-1"><a href="#cb33-1" aria-hidden="true" tabindex="-1"></a>  &lt;<span class="kw">BookTitle</span>&gt;A First Course in Database Systems&lt;/<span class="kw">BookTitle</span>&gt;</span>
+<span id="cb33-2"><a href="#cb33-2" aria-hidden="true" tabindex="-1"></a>  &lt;<span class="kw">BookTitle</span>&gt;Database Systems: The Complete Book&lt;/<span class="kw">BookTitle</span>&gt;</span></code></pre></div>
+<p>Il primo template cerca (<code>match="Book"</code>) l’elemento
+<code>Book</code> (questo è un XPath, anche se non lo sembra), una volta
+trovato applica la trasformazione
+<code>&lt;BookTitle&gt; &lt;xsl:value-of select="Title" /&gt; &lt;/BookTitle&gt;</code>
+che consiste nel mettere il valore selezionato dall’elemento
+<code>Title</code> (di nuovo un XPath) all’interno del tag
+<code>&lt;BookTitle&gt;</code>. Questo piccolo esempio consente già di
+intuire le grandi potenzialità di intervento sul testo possedute dalle
+trasformazioni XSLT. Nel caso l’output fosse stato html, avremmo dovuto
+inserire i tag per generare un html corretto, se avessimo voluto un file
+csv avremmo dovuto inserire le virgole e i nomi dei campi. L’XSLT non ha
+nulla di magico ma avendo la capacità di modificare efficacemente il
+testo, trovato mediante l’XPath, dà risultati che in altro modo, usando
+espressioni regolari o altre strutture ripetitive, non sarebbero
+ottenibili. Questa efficienza è dovuta all’uso del markup. Proviamo ora
+questa trasformazione: scegliamo i titoli che abbiano prezzo inferiore a
+90 euro.</p>
+<div class="sourceCode" id="cb34"><pre
+class="sourceCode xslt"><code class="sourceCode xslt"><span id="cb34-1"><a href="#cb34-1" aria-hidden="true" tabindex="-1"></a><span class="kw">&lt;</span><span class="bu">xsl:template</span><span class="ot"> match=</span><span class="va">&quot;Book[@Price </span><span class="dv">&amp;lt;</span><span class="va"> 90]&quot;</span><span class="kw">&gt;</span></span>
+<span id="cb34-2"><a href="#cb34-2" aria-hidden="true" tabindex="-1"></a>   <span class="kw">&lt;</span><span class="bu">xsl:copy-of</span><span class="ot"> select=</span><span class="va">&quot;.&quot;</span><span class="ot"> </span><span class="kw">/&gt;</span></span>
+<span id="cb34-3"><a href="#cb34-3" aria-hidden="true" tabindex="-1"></a><span class="kw">&lt;/</span><span class="bu">xsl:template</span><span class="kw">&gt;</span></span>
+<span id="cb34-4"><a href="#cb34-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb34-5"><a href="#cb34-5" aria-hidden="true" tabindex="-1"></a><span class="kw">&lt;</span><span class="bu">xsl:template</span><span class="ot"> match=</span><span class="va">&quot;text()&quot;</span><span class="ot"> </span><span class="kw">/&gt;</span></span></code></pre></div>
+<p>Ora l’XPath è leggermente più complesso:
+<code>Book[@Price &amp;lt; 90]</code>. Lo possiamo tradurre in: trova
+tutti gli elementi <code>Book</code> che soddisfino la regola indicata
+fra parentesi <code>[ ]</code>, in questo caso l’attributo
+<code>Price</code> deve essere inferiore a 90, <code>@</code> indica che
+<code>Price</code> è un attributo di <code>Book</code>. “Inferiore” deve
+essere indicato, per non confondersi con i segni di inizio o fine tag,
+con <code>&amp;lt;</code> invece che <code>&lt;</code>. Oltre al primo
+template è necessario aggiungerne un secondo che elimina il testo che
+passa indenne al controllo del primo template. Questo template, se trova
+del testo si limita a non farne nulla, quindi quel testo non comparirà
+nell’output. Trovate il file <code>bookstore_2.xsl</code> nel sito
+github.</p>
+<div class="sourceCode" id="cb35"><pre
+class="sourceCode bash"><code class="sourceCode bash"><span id="cb35-1"><a href="#cb35-1" aria-hidden="true" tabindex="-1"></a><span class="ex">xsltproc</span> <span class="at">-o</span> output.xml bookstore_2.xsl Bookstore-DTD.xml</span></code></pre></div>
+<p>e avrete come risultato la copia completa, grazie a
+<code>&lt;xsl:copy-of select="." /&gt;</code>, dell’elemento
+<code>Book</code> con <code>Price</code> minore di 90 Vediamo ora un
+esempio un po’ più articolato.</p>
+<div class="sourceCode" id="cb36"><pre
+class="sourceCode xslt"><code class="sourceCode xslt"><span id="cb36-1"><a href="#cb36-1" aria-hidden="true" tabindex="-1"></a><span class="kw">&lt;</span><span class="bu">xsl:stylesheet</span><span class="ot"> version=</span><span class="st">&quot;1.0&quot;</span><span class="ot"> xmlns:xsl=</span><span class="st">&quot;http://www.w3.org/1999/XSL/Transform&quot;</span><span class="kw">&gt;</span></span>
+<span id="cb36-2"><a href="#cb36-2" aria-hidden="true" tabindex="-1"></a><span class="kw">&lt;</span><span class="bu">xsl:output</span><span class="ot"> method=</span><span class="st">&quot;html&quot;</span><span class="ot"> indent=</span><span class="st">&quot;yes&quot;</span><span class="ot"> </span><span class="kw">/&gt;</span></span>
+<span id="cb36-3"><a href="#cb36-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb36-4"><a href="#cb36-4" aria-hidden="true" tabindex="-1"></a><span class="kw">&lt;</span><span class="bu">xsl:template</span><span class="ot"> match=</span><span class="va">&quot;/&quot;</span><span class="kw">&gt;</span></span>
+<span id="cb36-5"><a href="#cb36-5" aria-hidden="true" tabindex="-1"></a>   <span class="kw">&lt;html&gt;</span></span>
+<span id="cb36-6"><a href="#cb36-6" aria-hidden="true" tabindex="-1"></a>     <span class="kw">&lt;head/&gt;</span></span>
+<span id="cb36-7"><a href="#cb36-7" aria-hidden="true" tabindex="-1"></a>   <span class="kw">&lt;table</span><span class="ot"> border=</span><span class="st">&quot;1&quot;</span><span class="kw">&gt;</span></span>
+<span id="cb36-8"><a href="#cb36-8" aria-hidden="true" tabindex="-1"></a>      <span class="kw">&lt;th&gt;</span>Book<span class="kw">&lt;/th&gt;</span></span>
+<span id="cb36-9"><a href="#cb36-9" aria-hidden="true" tabindex="-1"></a>      <span class="kw">&lt;th&gt;</span>Cost<span class="kw">&lt;/th&gt;</span></span>
+<span id="cb36-10"><a href="#cb36-10" aria-hidden="true" tabindex="-1"></a>      <span class="kw">&lt;</span><span class="bu">xsl:for-each</span><span class="ot"> select=</span><span class="va">&quot;Bookstore/Book&quot;</span><span class="kw">&gt;</span></span>
+<span id="cb36-11"><a href="#cb36-11" aria-hidden="true" tabindex="-1"></a>      <span class="kw">&lt;</span><span class="bu">xsl:sort</span><span class="ot"> select=</span><span class="va">&quot;@Price&quot;</span><span class="ot"> </span><span class="kw">/&gt;</span></span>
+<span id="cb36-12"><a href="#cb36-12" aria-hidden="true" tabindex="-1"></a>         <span class="kw">&lt;</span><span class="bu">xsl:if</span><span class="ot"> test=</span><span class="va">&quot;@Price </span><span class="dv">&amp;lt;</span><span class="va"> 90&quot;</span><span class="kw">&gt;</span></span>
+<span id="cb36-13"><a href="#cb36-13" aria-hidden="true" tabindex="-1"></a>            <span class="kw">&lt;tr&gt;</span></span>
+<span id="cb36-14"><a href="#cb36-14" aria-hidden="true" tabindex="-1"></a>            <span class="kw">&lt;td&gt;&lt;i&gt;&lt;</span><span class="bu">xsl:value-of</span><span class="ot"> select=</span><span class="va">&quot;Title&quot;</span><span class="ot"> </span><span class="kw">/&gt;&lt;/i&gt;&lt;/td&gt;</span></span>
+<span id="cb36-15"><a href="#cb36-15" aria-hidden="true" tabindex="-1"></a>            <span class="kw">&lt;td&gt;&lt;</span><span class="bu">xsl:value-of</span><span class="ot"> select=</span><span class="va">&quot;@Price&quot;</span><span class="ot"> </span><span class="kw">/&gt;&lt;/td&gt;</span></span>
+<span id="cb36-16"><a href="#cb36-16" aria-hidden="true" tabindex="-1"></a>            <span class="kw">&lt;/tr&gt;</span></span>
+<span id="cb36-17"><a href="#cb36-17" aria-hidden="true" tabindex="-1"></a>         <span class="kw">&lt;/</span><span class="bu">xsl:if</span><span class="kw">&gt;</span></span>
+<span id="cb36-18"><a href="#cb36-18" aria-hidden="true" tabindex="-1"></a>      <span class="kw">&lt;/</span><span class="bu">xsl:for-each</span><span class="kw">&gt;</span></span>
+<span id="cb36-19"><a href="#cb36-19" aria-hidden="true" tabindex="-1"></a>   <span class="kw">&lt;/table&gt;</span></span>
+<span id="cb36-20"><a href="#cb36-20" aria-hidden="true" tabindex="-1"></a>   <span class="kw">&lt;/html&gt;</span></span>
+<span id="cb36-21"><a href="#cb36-21" aria-hidden="true" tabindex="-1"></a><span class="kw">&lt;/</span><span class="bu">xsl:template</span><span class="kw">&gt;</span></span>
+<span id="cb36-22"><a href="#cb36-22" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb36-23"><a href="#cb36-23" aria-hidden="true" tabindex="-1"></a><span class="kw">&lt;/</span><span class="bu">xsl:stylesheet</span><span class="kw">&gt;</span></span></code></pre></div>
+<p>Questo programma trasforma il nostro file XML in un file HTML. Parte
+dall’elemento <code>root</code> (<code>match="/"</code>), inserisce il
+corretto codice HTML, cerca tutti i <code>Book</code>, li ordina in base
+al prezzo e se costano meno di 90 ne riporta il titolo e il prezzo.</p>
+<div class="sourceCode" id="cb37"><pre
+class="sourceCode bash"><code class="sourceCode bash"><span id="cb37-1"><a href="#cb37-1" aria-hidden="true" tabindex="-1"></a><span class="ex">xsltproc</span> <span class="at">-o</span> output.html bookstore_3.xsl Bookstore-DTD.xml</span></code></pre></div>
+<p>e questo è il risultato</p>
+<div class="sourceCode" id="cb38"><pre
+class="sourceCode html"><code class="sourceCode html"><span id="cb38-1"><a href="#cb38-1" aria-hidden="true" tabindex="-1"></a><span class="dt">&lt;</span><span class="kw">html</span><span class="dt">&gt;</span></span>
+<span id="cb38-2"><a href="#cb38-2" aria-hidden="true" tabindex="-1"></a><span class="dt">&lt;</span><span class="kw">head</span><span class="dt">&gt;&lt;</span><span class="kw">meta</span><span class="ot"> http-equiv</span><span class="op">=</span><span class="st">&quot;Content-Type&quot;</span><span class="ot"> content</span><span class="op">=</span><span class="st">&quot;text/html; charset=UTF-8&quot;</span><span class="dt">&gt;&lt;/</span><span class="kw">head</span><span class="dt">&gt;</span></span>
+<span id="cb38-3"><a href="#cb38-3" aria-hidden="true" tabindex="-1"></a><span class="dt">&lt;</span><span class="kw">table</span><span class="ot"> border</span><span class="op">=</span><span class="st">&quot;1&quot;</span><span class="dt">&gt;</span></span>
+<span id="cb38-4"><a href="#cb38-4" aria-hidden="true" tabindex="-1"></a><span class="dt">&lt;</span><span class="kw">th</span><span class="dt">&gt;</span>Book<span class="dt">&lt;/</span><span class="kw">th</span><span class="dt">&gt;</span></span>
+<span id="cb38-5"><a href="#cb38-5" aria-hidden="true" tabindex="-1"></a><span class="dt">&lt;</span><span class="kw">th</span><span class="dt">&gt;</span>Cost<span class="dt">&lt;/</span><span class="kw">th</span><span class="dt">&gt;</span></span>
+<span id="cb38-6"><a href="#cb38-6" aria-hidden="true" tabindex="-1"></a><span class="dt">&lt;</span><span class="kw">tr</span><span class="dt">&gt;</span></span>
+<span id="cb38-7"><a href="#cb38-7" aria-hidden="true" tabindex="-1"></a><span class="dt">&lt;</span><span class="kw">td</span><span class="dt">&gt;&lt;</span><span class="kw">i</span><span class="dt">&gt;</span>A First Course in Database Systems<span class="dt">&lt;/</span><span class="kw">i</span><span class="dt">&gt;&lt;/</span><span class="kw">td</span><span class="dt">&gt;</span></span>
+<span id="cb38-8"><a href="#cb38-8" aria-hidden="true" tabindex="-1"></a><span class="dt">&lt;</span><span class="kw">td</span><span class="dt">&gt;</span>85<span class="dt">&lt;/</span><span class="kw">td</span><span class="dt">&gt;</span></span>
+<span id="cb38-9"><a href="#cb38-9" aria-hidden="true" tabindex="-1"></a><span class="dt">&lt;/</span><span class="kw">tr</span><span class="dt">&gt;</span></span>
+<span id="cb38-10"><a href="#cb38-10" aria-hidden="true" tabindex="-1"></a><span class="dt">&lt;/</span><span class="kw">table</span><span class="dt">&gt;</span></span>
+<span id="cb38-11"><a href="#cb38-11" aria-hidden="true" tabindex="-1"></a><span class="dt">&lt;/</span><span class="kw">html</span><span class="dt">&gt;</span></span></code></pre></div>
+<h3 id="trasformare-testo-in-pdf">Trasformare testo in PDF</h3>
+<p>Ecco un esempio di docbook.</p>
+<div class="sourceCode" id="cb39"><pre
+class="sourceCode xml"><code class="sourceCode xml"><span id="cb39-1"><a href="#cb39-1" aria-hidden="true" tabindex="-1"></a><span class="co">&lt;!-- file manuale_1.xml--&gt;</span></span>
+<span id="cb39-2"><a href="#cb39-2" aria-hidden="true" tabindex="-1"></a>&lt;<span class="kw">article</span>&gt;</span>
+<span id="cb39-3"><a href="#cb39-3" aria-hidden="true" tabindex="-1"></a>    &lt;<span class="kw">info</span>&gt;</span>
+<span id="cb39-4"><a href="#cb39-4" aria-hidden="true" tabindex="-1"></a>        &lt;<span class="kw">title</span>&gt;Capitolo di prova&lt;/<span class="kw">title</span>&gt;</span>
+<span id="cb39-5"><a href="#cb39-5" aria-hidden="true" tabindex="-1"></a>        &lt;<span class="kw">author</span>&gt;</span>
+<span id="cb39-6"><a href="#cb39-6" aria-hidden="true" tabindex="-1"></a>            &lt;<span class="kw">personname</span>&gt;&lt;<span class="kw">firstname</span>&gt;Mario&lt;/<span class="kw">firstname</span>&gt;&lt;<span class="kw">surname</span>&gt;Rossi&lt;/<span class="kw">surname</span>&gt;&lt;/<span class="kw">personname</span>&gt;</span>
+<span id="cb39-7"><a href="#cb39-7" aria-hidden="true" tabindex="-1"></a>        &lt;/<span class="kw">author</span>&gt;</span>
+<span id="cb39-8"><a href="#cb39-8" aria-hidden="true" tabindex="-1"></a>    &lt;/<span class="kw">info</span>&gt;</span>
+<span id="cb39-9"><a href="#cb39-9" aria-hidden="true" tabindex="-1"></a>    &lt;<span class="kw">sect1</span>&gt;</span>
+<span id="cb39-10"><a href="#cb39-10" aria-hidden="true" tabindex="-1"></a>        &lt;<span class="kw">title</span>&gt;Evviva l&#39;XML&lt;/<span class="kw">title</span>&gt;</span>
+<span id="cb39-11"><a href="#cb39-11" aria-hidden="true" tabindex="-1"></a>        &lt;<span class="kw">para</span>&gt;Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor</span>
+<span id="cb39-12"><a href="#cb39-12" aria-hidden="true" tabindex="-1"></a>            incididunt ut labore et dolore magna aliqua.&lt;/<span class="kw">para</span>&gt;</span>
+<span id="cb39-13"><a href="#cb39-13" aria-hidden="true" tabindex="-1"></a>        &lt;<span class="kw">para</span>&gt;Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi</span>
+<span id="cb39-14"><a href="#cb39-14" aria-hidden="true" tabindex="-1"></a>            ut aliquip ex ea commodo consequat. &lt;/<span class="kw">para</span>&gt;</span>
+<span id="cb39-15"><a href="#cb39-15" aria-hidden="true" tabindex="-1"></a>        &lt;<span class="kw">itemizedlist</span>&gt;</span>
+<span id="cb39-16"><a href="#cb39-16" aria-hidden="true" tabindex="-1"></a>            &lt;<span class="kw">listitem</span>&gt;</span>
+<span id="cb39-17"><a href="#cb39-17" aria-hidden="true" tabindex="-1"></a>                &lt;<span class="kw">para</span>&gt;Duis aute irure dolor in reprehenderit &lt;/<span class="kw">para</span>&gt;</span>
+<span id="cb39-18"><a href="#cb39-18" aria-hidden="true" tabindex="-1"></a>            &lt;/<span class="kw">listitem</span>&gt;</span>
+<span id="cb39-19"><a href="#cb39-19" aria-hidden="true" tabindex="-1"></a>            &lt;<span class="kw">listitem</span>&gt;</span>
+<span id="cb39-20"><a href="#cb39-20" aria-hidden="true" tabindex="-1"></a>                &lt;<span class="kw">para</span>&gt;in voluptate velit esse cillum dolore eu fugiat nulla pariatur. &lt;/<span class="kw">para</span>&gt;</span>
+<span id="cb39-21"><a href="#cb39-21" aria-hidden="true" tabindex="-1"></a>            &lt;/<span class="kw">listitem</span>&gt;</span>
+<span id="cb39-22"><a href="#cb39-22" aria-hidden="true" tabindex="-1"></a>        &lt;/<span class="kw">itemizedlist</span>&gt;</span>
+<span id="cb39-23"><a href="#cb39-23" aria-hidden="true" tabindex="-1"></a>    &lt;/<span class="kw">sect1</span>&gt;</span>
+<span id="cb39-24"><a href="#cb39-24" aria-hidden="true" tabindex="-1"></a>&lt;/<span class="kw">article</span>&gt;</span></code></pre></div>
+<p>Ho tralasciato le dichiarazioni XML e i “namespaces” che individuano
+il vocabolario limitandomi a riportare i tag che ci aiutano a
+comprendere meglio lo script. Potete controllare su github il file
+completo il cui nome è riportato nella prima riga. In Docbook sono
+presenti alcune centinaia di tag che riescono a coprire quasi tutti i
+casi possibili che si incontrano in una pubblicazione. Compreso un
+sottoinsieme noto come <a
+href="https://tdg.docbook.org/tdg/publishers/5.0/index.html">DocBook
+Publishers</a> che presenta solo i tag usati nell’editoria libraria.
+Coome esempio riportiamo alcuni tag presenti solo in Docbook
+Publishers:</p>
+<ul>
+<li>dcterms: In Docbook Publishers sono stati inseriti molti termini
+della collezione di metadati nota come <a
+href="https://dublincore.org/">Dublin Core</a></li>
+<li>dialogue — Il contenitore per i dialoghi fra personaggi teatrali (ad
+esempio)</li>
+<li>drama — Il contenitore di dialoghi per opere teatrali</li>
+<li>line — Una riga di dialogo o un verso di poesia</li>
+<li>linegroup — Un gruppo di righe di dialoghi o versi di poesia</li>
+</ul>
+<div class="sourceCode" id="cb40"><pre
+class="sourceCode bash"><code class="sourceCode bash"><span id="cb40-1"><a href="#cb40-1" aria-hidden="true" tabindex="-1"></a><span class="ex">xsltproc</span> <span class="at">-o</span> test.html /usr/share/xml/docbook/stylesheet/nwalsh/html/docbook.xsl manuale_1.xml</span></code></pre></div>
+<p>lanciando questo comando da console si ottiene un file html. Per
+avere un PDF è necessario invece generare prima un file con XSL-FO e poi
+con un processore come Apache fop generare il vero e proprio PDF.</p>
+<div class="sourceCode" id="cb41"><pre
+class="sourceCode bash"><code class="sourceCode bash"><span id="cb41-1"><a href="#cb41-1" aria-hidden="true" tabindex="-1"></a><span class="ex">xsltproc</span> <span class="at">-o</span> intermediate-fo-file.fo /usr/share/xml/docbook/stylesheet/nwalsh/fo/docbook.xsl manuale_1.xml</span>
+<span id="cb41-2"><a href="#cb41-2" aria-hidden="true" tabindex="-1"></a><span class="ex">fop</span> <span class="at">-pdf</span> final-pdf-file.pdf <span class="at">-fo</span> intermediate-fo-file.fo</span></code></pre></div>
+<p>Come vedete sono comandi sostanzialmente ripetitivi. Si suol dire che
+i programmatori sono dei pigri perché vogliono automatizzare tutti i
+processi ripetitivi. I diversi comandi si possono raccogliere e far
+eseguire a un file denominato <a
+href="http://www.sagehill.net/docbookxsl/Makefiles.html"><code>makefile</code></a>.
+Il linguaggio <a
+href="https://www.gnu.org/software/make/manual/make.html"><code>Make</code></a>
+è abbastanza sofisticato, noi ci limiteremo a un esempio molto
+semplice:</p>
+<div class="sourceCode" id="cb42"><pre
+class="sourceCode makefile"><code class="sourceCode makefile"><span id="cb42-1"><a href="#cb42-1" aria-hidden="true" tabindex="-1"></a><span class="dv">html:</span></span>
+<span id="cb42-2"><a href="#cb42-2" aria-hidden="true" tabindex="-1"></a>xsltproc -o test.html /usr/share/xml/docbook/stylesheet/nwalsh/html/docbook.xsl manuale_1.xml</span>
+<span id="cb42-3"><a href="#cb42-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb42-4"><a href="#cb42-4" aria-hidden="true" tabindex="-1"></a><span class="dv">pdf:</span></span>
+<span id="cb42-5"><a href="#cb42-5" aria-hidden="true" tabindex="-1"></a>xsltproc -o intermediate-fo-file.fo /usr/share/xml/docbook/stylesheet/nwalsh/fo/docbook.xsl manuale_1.xml</span>
+<span id="cb42-6"><a href="#cb42-6" aria-hidden="true" tabindex="-1"></a>fop -pdf final-pdf-file.pdf -fo intermediate-fo-file.fo</span></code></pre></div>
+<p>Usando questo <code>makefile</code> i comandi diventano, nella stessa
+directory <code>make html</code> oppure per il pdf
+<code>make pdf</code>. Se i comandi inseriti nel <code>makefile</code>
+sono molti il vantaggio è importante, soprattutto in un ambiente come
+quello editoriale dove la correzione bozze, ad esempio, richiede
+innumerevoli modifiche al testo e un costante controllo del risultato
+finale. In questi esempi abbiamo usato Apache Fop ma esistono molti
+altri processori. Li potete trovare in <a
+href="https://www.w3.org/Style/XSL/">questa pagina</a>. L’alternativa
+che ritengo più semplice è l’utilizzo di Latex attraverso pandoc. Oppure
+con <a href="https://pandoc.org/">pandoc</a>:</p>
+<div class="sourceCode" id="cb43"><pre
+class="sourceCode bash"><code class="sourceCode bash"><span id="cb43-1"><a href="#cb43-1" aria-hidden="true" tabindex="-1"></a><span class="ex">saxon</span> <span class="at">-o</span> docbook-file.xml custom.xml stylesheet.xslt <span class="co">#generate DocBook</span></span>
+<span id="cb43-2"><a href="#cb43-2" aria-hidden="true" tabindex="-1"></a><span class="ex">pandoc</span> <span class="at">-f</span> docbook docbook-file.xml <span class="at">-t</span> context <span class="at">--standalone</span> <span class="at">--template</span> template.tex <span class="at">-o</span> out.tex <span class="co">#generate ConTeXt</span></span>
+<span id="cb43-3"><a href="#cb43-3" aria-hidden="true" tabindex="-1"></a><span class="ex">context</span> out.tex <span class="co">#generate PDF --&gt;</span></span>
+<span id="cb43-4"><a href="#cb43-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb43-5"><a href="#cb43-5" aria-hidden="true" tabindex="-1"></a><span class="ex">pandoc</span> <span class="at">--from</span> docbook <span class="at">--to</span> latex <span class="at">--output</span> myDocbook.pdf manuale_1.xml</span></code></pre></div>
+<h2 id="conclusioni">Conclusioni</h2>
+<p>In queste pagine abbiamo visto esempi di file html e xml in diverse
+situazioni, più o meno riconducibili ad attività web rilevanti per
+l’editoria. E questo è vero anche per il lavoro con DocBook, anche se
+gli esempi facevano solo riferimento ad applicazioni desktop. C’è un
+convitato di pietra in questa pagine, forse intravisto solo nella
+seconda sezione: lo sviluppo di API (Application programming Interface),
+naturale sviluppo delle nozioni qui discusse e porta di accesso al
+<em>cloud</em> dove le nozioni di programmazione lato utente, lato
+server e desktop perdono di significato e dove i contenuti assumono il
+ruolo centrale che meritano.</p>
+</body>
+</html>
